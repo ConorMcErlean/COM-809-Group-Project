@@ -6,9 +6,9 @@ Created on: 19/11/2019
 Kitchen Staff Class, to allow Kitchen staff to view orders and mark out of stock.
 */
 
-public class KitchenStaff {
+class KitchenStaff {
    // Constructors
-   public KitchenStaff(){
+   protected KitchenStaff(){
    }// Default Constructor
 
    // Early version of method to print order to console
