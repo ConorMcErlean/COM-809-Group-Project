@@ -17,4 +17,12 @@ class KitchenStaff {
    }//viewOrders
 
    // Method to mark an item out of stock
+   protected void markOutOfStock(Item item){
+      item.setInStock(false);
+      System.out.println("The item " + item.getName() + " has been marked out-of-stock.");
+   }
+   protected void markBackInStock(Item item){
+      item.setInStock(true);
+      System.out.println("The item " + item.getName() + " has been marked back in stock");
+   }
 }//class

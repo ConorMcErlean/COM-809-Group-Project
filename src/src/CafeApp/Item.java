@@ -52,7 +52,7 @@ public class Item {
       this.price = price;
    }
 
-   public boolean isInStock() {
+   public boolean getInStock() {
       return inStock;
    }
 
