@@ -5,6 +5,9 @@ If git is new you can look at the tutorials here for more information: https://w
 Trello board located at: https://trello.com/b/TGhDOQHx
 Just pick up the next task in the to-do column and give it a go.
 
+Group folder located at: https://ulster-my.sharepoint.com/:f:/r/personal/mcerlean-c13_ulster_ac_uk/Documents/University/Java%20Programming/Group%20Project?csf=1&e=bI0GRk
+Any addditional files or documents that dont make sense on the Git, just throw them there!
+
 Repository of files for COM809 group project.
 Files in this repository may have been edited or added by any of the members of the group.
 
