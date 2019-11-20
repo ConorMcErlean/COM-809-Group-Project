@@ -11,7 +11,7 @@ public class TestKitchenStaff {
       Item soda = new Item("Soda Bread", 3.50);
       Item egg = new Item("Fried Egg", 2.00, false, 0);
 
-      KitchenStaff joe = new KitchenStaff();
+      KitchenStaff joe = new KitchenStaff(1000);
       joe.viewOrders(order);
       joe.markBackInStock(egg);
       joe.markOutOfStock(soda);
