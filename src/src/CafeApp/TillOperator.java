@@ -11,8 +11,8 @@ public class TillOperator {
 
     //variables used throughout
 
-    public int numAtTable;
-    public int tableNumber;
+    private int numAtTable;
+    private int tableNumber;
     private static int orderCount = 0;
 
 
