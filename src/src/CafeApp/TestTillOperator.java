@@ -1,4 +1,4 @@
-package GroupProject;
+package CafeApp;
 
 import java.util.Scanner;
 
