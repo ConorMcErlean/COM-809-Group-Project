@@ -27,6 +27,7 @@ public class TillOperator {
         numAtTable = peopleAtTable;
     }
 
+    //methods to get table number and number of people at the table
     public int getTableNumber (int tableNumber) {
         return tableNumber;
     }//geTableNumber
@@ -35,7 +36,7 @@ public class TillOperator {
         return numAtTable;
     }//geNumAtTable
 
-
+    //method to receive the order details
     public void requestOrderDetails(int tableNumber, int numAtTable){
         int person = 1;
         String order = "";
@@ -54,11 +55,14 @@ public class TillOperator {
         System.out.print("\n");
     }//requestOrderDetails
 
-
+    //method to printOrder Count
     public void printOrderCount (){
         System.out.print("The number of orders is: " + orderCount);
     }
 
-
+    //method to get Order Count
+    public int getOrderCount() {
+        return orderCount;
+    }//getOrderCount
 }//class
 
