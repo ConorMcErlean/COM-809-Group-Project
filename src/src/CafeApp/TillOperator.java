@@ -6,7 +6,14 @@ import java.util.Scanner;
  * Created by pg19coj on 21/11/2019
  * Methods to take an order
  */
-public class TillOperator {
+public class TillOperator extends Staff {
+
+    //defaultConstructor
+    protected TillOperator(int loginCode){
+        super(loginCode);
+    }//defaultConstructor
+
+
     public static Scanner keyboard = new Scanner(System.in);
 
     //variables used throughout
@@ -37,7 +44,7 @@ public class TillOperator {
     }//geNumAtTable
 
     //method to receive the order details
-    public void requestOrderDetails(int tableNumber, int numAtTable){
+    public String requestOrderDetails(int tableNumber, int numAtTable){
         int person = 1;
         String order = "";
         System.out.print("\n");
@@ -53,6 +60,7 @@ public class TillOperator {
 
         orderCount = orderCount +1;
         System.out.print("\n");
+        return order;
     }//requestOrderDetails
 
     //method to printOrder Count

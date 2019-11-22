@@ -12,7 +12,7 @@ public class TestTillOperator {
         Scanner keyboard = new Scanner(System.in);
         int tableNumber, peopleAtTable, orderCount;
 
-        TillOperator order1 = new TillOperator();
+        TillOperator order1 = new TillOperator(101);
 
         System.out.print("Enter Table Number: ");
         tableNumber = keyboard.nextInt();
@@ -24,7 +24,7 @@ public class TestTillOperator {
         order1.setTableNumber(tableNumber);
         order1.requestOrderDetails(tableNumber, peopleAtTable);
 
-        TillOperator order2 = new TillOperator();
+        TillOperator order2 = new TillOperator(101);
 
         System.out.print("Enter Table Number: ");
         tableNumber = keyboard.nextInt();
