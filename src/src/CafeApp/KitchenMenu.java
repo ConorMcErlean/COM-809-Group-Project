@@ -29,17 +29,16 @@ public class KitchenMenu {
                logout = false;
                break;
             case 2:
-               System.out.println("Function not yet added");
+               System.out.println("Out of stock items:");
+               MenuForCafe.viewOutOfStock();
                logout = false;
                break;
             case 3:
-               System.out.println("Function on its way");
-               //KitchenStaff.markOutOfStock();
+               KitchenStaff.markOutOfStock(MenuForCafe.selectItem());
                logout = false;
                break;
             case 4:
-               System.out.println("Function coming soon");
-               //KitchenStaff.markBackInStock();
+               KitchenStaff.markBackInStock(MenuForCafe.selectOutOfStock());
                logout = false;
                break;
             case 5:

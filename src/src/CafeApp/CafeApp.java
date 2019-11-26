@@ -8,7 +8,7 @@ public class CafeApp {
    public static void main(String[] args) {
       KitchenStaff kitchen1 = new KitchenStaff(2222);
       TillOperator till1 = new TillOperator(1111);
-
+      MenuForCafe.readyMenu();
       MainMenu.greeting();
       MainMenu.login();
    }//main

@@ -21,10 +21,12 @@ class KitchenStaff extends Staff {
    // Method to mark an item out of stock
    protected static void markOutOfStock(Item item){
       item.setInStock(false);
+      MenuForCafe.addToOutOfStock(item);
       System.out.println("The item " + item.getName() + " has been marked out-of-stock.");
    }
    protected static void markBackInStock(Item item){
       item.setInStock(true);
+      MenuForCafe.removeFromOutOfStock(item);
       System.out.println("The item " + item.getName() + " has been marked back in stock");
    }
 }//class
