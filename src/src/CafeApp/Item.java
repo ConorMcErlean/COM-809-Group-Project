@@ -3,20 +3,21 @@ package CafeApp;
 Created by: Conor McErlean
 Created on: 19/11/2019
 
-Class for menu items
+Class for menu items.
+Allows each item once instantiated to have both a name and a price, alongside holding other relevant instance variables.
 */
 
 import java.text.DecimalFormat;
 
 public class Item {
-   // Class / Local variables
+   // Instance variables
    private String name;
    private double price;
    private boolean inStock;
    private int discount;
    DecimalFormat df = new DecimalFormat("0.00");
 
-   // Constuctors
+   // Constructors
 
    public Item(String itemName, double itemPrice){
       name = itemName;
@@ -35,12 +36,12 @@ public class Item {
       discount = introDiscount;
    }// Alternate constructor for when all fields are known
 
-   // Class Methods (Accessors and Modifiers)
+   // Class Methods (Accessors and Mutators)
+   // All have been created but some may be unnecessary. Additional methods can be removed at a later date.
 
    public String getName() {
       return name;
    }
-   //test
 
    public void setName(String name) {
       this.name = name;
@@ -69,6 +70,7 @@ public class Item {
    public void setDiscount(int discount) {
       this.discount = discount;
    }
+
 
    public String toString(){
       if (inStock){

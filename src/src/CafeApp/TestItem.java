@@ -1,8 +1,9 @@
-package CafeApp;/*
+package CafeApp;
+/*
 Created by: Conor McErlean
 Created on: 19/11/2019
 
-Additional Comments...
+Program to test the Item class.
 */
 
 public class TestItem {
