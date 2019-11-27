@@ -15,6 +15,7 @@ public class MenuForCafe {
    private static Item americano = new Item("Americano", 2.00);
    private static Item capucchino = new Item("Cappuchino", 3.00);
    private static Item latte = new Item("Latte", 3.00);
+   private static Item tea = new Item ("Tea", 1.00);
    private static Item friedegg = new Item("Fried Eggs", 3.50);
    private static Item sodabread = new Item("Soda Bread", 1.50);
 
@@ -29,6 +30,7 @@ public class MenuForCafe {
       menu.add(americano);
       menu.add(capucchino);
       menu.add(latte);
+      menu.add(tea);
       menu.add(friedegg);
       menu.add(sodabread);
    }

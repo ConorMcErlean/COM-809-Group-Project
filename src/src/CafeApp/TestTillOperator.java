@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Created by pg19coj on 21/11/2019
- * program to test Till Operator
+ * Jen's tests - program to test Till Operator
  */
 public class TestTillOperator {
     public static void main(String[] args) {
@@ -19,6 +19,18 @@ public class TestTillOperator {
         System.out.print("Enter Number of people at table: ");
         peopleAtTable = keyboard.nextInt();
 
+
+        //private int tableNumber (){
+            //System.out.print("Enter Table Number: ");
+          //  tableNumber = keyboard.nextInt();
+           // return tableNumber;
+        //}
+
+       //private int NoAtTable (){
+            //System.out.print("Enter Number of people at table: ");
+           // numAtTable = keyboard.nextInt();
+          //  return numAtTable;
+       // }
 
         order1.setNumAtTable(peopleAtTable);
         order1.setTableNumber(tableNumber);
