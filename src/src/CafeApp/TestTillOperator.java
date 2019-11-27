@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Created by pg19coj on 21/11/2019
- * COMMENTS ABOUT PROGRAM HERE
+ * program to test Till Operator
  */
 public class TestTillOperator {
     public static void main(String[] args) {
@@ -22,7 +22,9 @@ public class TestTillOperator {
 
         order1.setNumAtTable(peopleAtTable);
         order1.setTableNumber(tableNumber);
-        order1.requestOrderDetails(tableNumber, peopleAtTable);
+       // order1.requestOrderDetails(tableNumber, peopleAtTable);
+
+        order1.printOrder();
 
         TillOperator order2 = new TillOperator(101);
 
@@ -34,7 +36,7 @@ public class TestTillOperator {
 
         order2.setNumAtTable(peopleAtTable);
         order2.setTableNumber(tableNumber);
-        order2.requestOrderDetails(tableNumber, peopleAtTable);
+        //order2.requestOrderDetails(tableNumber, peopleAtTable);
 
         order2.printOrderCount();
 
