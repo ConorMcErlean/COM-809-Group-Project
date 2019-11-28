@@ -21,10 +21,11 @@ public class TillMenu {
             System.out.println("\nTill Operator\nEnter a menu choice: ");
             System.out.println("1. \t Take Order");
             System.out.println("2. \t View Order");
-            System.out.println("3. \t Remove Item from Order");
-            System.out.println("4. \t View out of Stock");
-            System.out.println("5. \t Print Bill");
-            System.out.println("5. \t Logout");
+            System.out.println("3. \t Add to Order");
+            System.out.println("4. \t Remove Item from Order");
+            System.out.println("5. \t View out of Stock");
+            System.out.println("6. \t Print Bill");
+            System.out.println("7. \t Logout");
             choice = keyboard.nextInt();
 
             //Output
@@ -35,27 +36,32 @@ public class TillMenu {
                     next = true;
                     break;
                 case 2:
-                    //method to view order
+                    //method to add to order
                     TakeOrder.addToOrder();
-                    //TillOperator.viewCurrentOrder();
+                    next = true;
                     break;
                 case 3:
+                    //method to view order
+                    TillOperator.viewCurrentOrder();
+                    next = true;
+                    break;
+                case 4:
                     //method to remove from order
                     TillOperator.removeOrderItem();
                     next = true;
                     break;
-                case 4:
+                case 5:
                     //method to view out of stock
                     MenuForCafe.viewOutOfStock();
                     next = true;
                     break;
 
-                case 5:
+                case 6:
                     //method to print bill to be added
                     System.out.print("You have opted to print a bill");
                     next = true;
                     break;
-                case 6:
+                case 7:
                     //method to return to start
                     System.out.print("You have opted to return to log in page");
                     MainMenu.login();
