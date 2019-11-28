@@ -20,8 +20,8 @@ public class TillMenu {
             //switch statement to offer the till staff options of what to do
             System.out.println("\nTill Operator\nEnter a menu choice: ");
             System.out.println("1. \t Take Order");
-            System.out.println("2. \t View Order");
-            System.out.println("3. \t Add to Order");
+            System.out.println("2. \t Add to Order");
+            System.out.println("3. \t View Order");
             System.out.println("4. \t Remove Item from Order");
             System.out.println("5. \t View out of Stock");
             System.out.println("6. \t Print Bill");
@@ -37,7 +37,7 @@ public class TillMenu {
                     break;
                 case 2:
                     //method to add to order
-                    TakeOrder.addToOrder();
+                    TillOperator.addToOrder();
                     next = true;
                     break;
                 case 3:

@@ -56,6 +56,10 @@ public class TillOperator extends Staff {
     protected static void tableOrder(){
         tableInfo() ;
         TakeOrder.startOrder();
+    }//tableOrder
+
+    //method to add to order
+    protected static void addToOrder(){
         TakeOrder.addToOrder();
     }//tableOrder
 
