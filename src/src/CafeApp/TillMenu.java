@@ -9,49 +9,64 @@ import java.util.Scanner;
 public class TillMenu {
 
    static Scanner keyboard = new Scanner(System.in);
+    static private boolean next = true;
+    static  private int choice;
 
-   //to be accessible by TillStaff Only
+    //to be accessible by TillStaff Only
     protected static void TillMenu () {
 
-
-
-
-            //switch statements to offer the till staff options of what to do
-            System.out.println("1. \t Orders");
-            System.out.println("2. \t Print table's bill");
-            System.out.println("3. \t View out of Stock");
-            System.out.println("4. \t Empty ATM");
+        //do..while to keep the menu looping
+        do {
+            //switch statement to offer the till staff options of what to do
+            System.out.println("\nTill Operator\nEnter a menu choice: ");
+            System.out.println("1. \t Take Order");
+            System.out.println("2. \t View Order");
+            System.out.println("3. \t Remove Item from Order");
+            System.out.println("4. \t View out of Stock");
+            System.out.println("5. \t Print Bill");
             System.out.println("5. \t Logout");
-
-            System.out.print("\nEnter a menu choice: ");
-            int choice = keyboard.nextInt();
+            choice = keyboard.nextInt();
 
             //Output
             switch (choice) {
                 case 1:
-                    //method to take order to be added
-                    System.out.print("You have opted to take order");
-                    TillTakeOrder.takeOrder();
+                    //methods to take order
+                    TillOperator.tableOrder();
+                    next = true;
                     break;
                 case 2:
-                    //method to print bill to be added
-                    System.out.print("You have opted to print a bill");
+                    //method to view order
+                    TakeOrder.addToOrder();
+                    //TillOperator.viewCurrentOrder();
                     break;
                 case 3:
-                    //method to view out of stock to be added
-                    System.out.print("You have opted to view the out of stock items");
-                    MenuForCafe.viewOutOfStock();
+                    //method to remove from order
+                    TillOperator.removeOrderItem();
+                    next = true;
                     break;
                 case 4:
-                    //empty ATM;
-
+                    //method to view out of stock
+                    MenuForCafe.viewOutOfStock();
+                    next = true;
                     break;
+
                 case 5:
+                    //method to print bill to be added
+                    System.out.print("You have opted to print a bill");
+                    next = true;
+                    break;
+                case 6:
                     //method to return to start
                     System.out.print("You have opted to return to log in page");
+                    MainMenu.login();
+                    next = false;
+                    break;
                 default:
                     System.out.println("Option not recognised, please try again");
+                    next = true;;
+                    break;
             }//switch
+        } while (!next);
 
     }//main
 }//class 

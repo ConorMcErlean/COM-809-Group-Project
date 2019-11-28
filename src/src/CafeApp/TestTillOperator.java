@@ -19,39 +19,24 @@ public class TestTillOperator {
         System.out.print("Enter Number of people at table: ");
         peopleAtTable = keyboard.nextInt();
 
-
-        //private int tableNumber (){
-            //System.out.print("Enter Table Number: ");
-          //  tableNumber = keyboard.nextInt();
-           // return tableNumber;
-        //}
-
-       //private int NoAtTable (){
-            //System.out.print("Enter Number of people at table: ");
-           // numAtTable = keyboard.nextInt();
-          //  return numAtTable;
-       // }
-
-        order1.setNumAtTable(peopleAtTable);
-        order1.setTableNumber(tableNumber);
-       // order1.requestOrderDetails(tableNumber, peopleAtTable);
-
-        order1.printOrder();
-
-        TillOperator order2 = new TillOperator(101);
-
-        System.out.print("Enter Table Number: ");
-        tableNumber = keyboard.nextInt();
-        System.out.print("Enter Number of people at table: ");
-        peopleAtTable = keyboard.nextInt();
+        //order1.setNumAtTable(peopleAtTable);
+        //order1.setTableNumber(tableNumber);
 
 
-        order2.setNumAtTable(peopleAtTable);
-        order2.setTableNumber(tableNumber);
-        //order2.requestOrderDetails(tableNumber, peopleAtTable);
-
-        order2.printOrderCount();
+        System.out.println("\n***TEST***");
+        //method to start to take order
 
 
-    }//class
-}//main
+        TakeOrder.order.add(MenuForCafe.selectItem());
+        TakeOrder.order.add(MenuForCafe.selectItem());
+        TakeOrder.order.add(MenuForCafe.selectItem());
+
+
+        TakeOrder.order.add(MenuForCafe.selectItem());
+
+
+
+
+
+        }//class
+    }//main

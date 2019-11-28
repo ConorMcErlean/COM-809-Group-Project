@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TillOperator extends Staff {
 
     //defaultConstructor
-    protected TillOperator(int loginCode){
+    protected TillOperator(int loginCode) {
         super(loginCode);
     }//defaultConstructor
 
@@ -20,12 +20,20 @@ public class TillOperator extends Staff {
     //variables used throughout
     private static int numAtTable;
     private static int tableNumber;
-    private String order;
-    private static int orderCount = 0;
 
 
-    // set methods for table number/ amount of people at table:
 
+    // method for getting table number/ amount of people at table:
+    protected static void tableInfo() {
+        System.out.print("\nEnter Table Number: ");
+        int tableNumber = keyboard.nextInt();
+        TillOperator.setTableNumber(tableNumber);
+        System.out.print("Number of people at table: ");
+        int noOfPeople = keyboard.nextInt();
+        TillOperator.setNumAtTable(noOfPeople);
+    }//takeOrder
+
+    //set Methods for table number/ amount of people at table
     public static void setTableNumber(int tableNo) {
         tableNumber = tableNo;
     }//setTableNumber
@@ -35,43 +43,34 @@ public class TillOperator extends Staff {
         numAtTable = peopleAtTable;
     }//setNumAtTable
 
-
     //methods to get table number and number of people at the table:
-    public int getTableNumber (int tableNumber) {
+    public static int getTableNumber() {
         return tableNumber;
     }//geTableNumber
 
-    public int getNumAtTable (int numAtTable) {
+    public static int getNumAtTable() {
         return numAtTable;
     }//geNumAtTable
 
-    public static void tableInfo(){
-        System.out.print("Enter Table Number: ");
-        int tableNumber = keyboard.nextInt();
-        TillOperator.setTableNumber(tableNumber);
-        System.out.print("Number of people at table: ");
-        int noOfPeople = keyboard.nextInt();
-        TillOperator.setNumAtTable(noOfPeople);
-    }//takeOrder
+    //method to take table order
+    protected static void tableOrder(){
+        tableInfo() ;
+        TakeOrder.startOrder();
+        TakeOrder.addToOrder();
+    }//tableOrder
 
-      //  orderCount = orderCount +1;
-       // System.out.print("\n");
-      //  return order;
-   // }//requestOrderDetails
+    //method to view current order
+    protected static void viewCurrentOrder() {
+        System.out.println("The current order is: ");
+        TakeOrder.viewOrder();
+    }//viewCurrentOrder
 
-    //method to print order:
-    public void printOrder (){
-       System.out.println("table " + tableNumber + "'s order is: " + order + "\n");
-    } //getOrder
+    //method to remove item from order
+    protected static void removeOrderItem(){
+        TakeOrder.removeFromOrder();
+        System.out.print( "Item has been removed");
+    }//removeOrderItem
 
-    //method to printOrder Count
-    public void printOrderCount (){
-        System.out.print("The number of orders is: " + orderCount);
-    }
-
-    //method to get Order Count
-    public int getOrderCount() {
-        return orderCount;
-    }//getOrderCount
 }//class
+
 
