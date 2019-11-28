@@ -38,7 +38,7 @@ public class MainMenu {
                 case 1111:
                     // Code for entry into till menu below
                     System.out.println("You have entered the till");
-                    TillMenu.TillMenu();
+                    TillMenu.TillOpMenu();
                     // Exit to login screen
                     logoutNow = false;
                     break;

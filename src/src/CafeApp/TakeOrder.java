@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by pg19coj on 27/11/2019
+ * Created by Jennifer Coggan on 27/11/2019
  * Program to take a tables order
  */
 public class TakeOrder {
@@ -24,21 +24,34 @@ public class TakeOrder {
 
     //method to start to take order
     protected static void startOrder() {
-
-        order.add(MenuForCafe.selectItem());
-
+       int choice;
+       char response = 'y';
+       while (response == 'y') {
+            order.add(MenuForCafe.selectItem());
+            System.out.print("Add another item (y or n)?: ");
+             response=keyboard.nextLine().charAt(0);
+             System.out.print("\n");
+        }//while
+        viewOrder();
     }//startOrder
 
     //method to add to order
     protected static void addToOrder() {
-
-        order.add(MenuForCafe.selectItem());
+        char response = 'y';
+       System.out.print("\nAdd to Order: \n");
+        while (response == 'y') {
+            order.add(MenuForCafe.selectItem());;
+            System.out.print("Add another item (y or n)?: ");
+            response=keyboard.nextLine().charAt(0);
+            System.out.print("\n");
+        }//while
 
     }//addToOrder
 
     //method to view order
     protected static void viewOrder(){
         int number = 1;
+        System.out.println("\nThe current order is: ");
         for (Item item: order) {
             System.out.println(number + item.getName());
             number++;
@@ -53,6 +66,7 @@ public class TakeOrder {
         System.out.print("Remove number: ");
         choice = keyboard.nextInt();
         order.remove(choice);
+        System.out.print( "Item has been removed\n");
     }//removeFromOrder
 
 

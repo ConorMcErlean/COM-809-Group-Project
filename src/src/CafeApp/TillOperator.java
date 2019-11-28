@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by pg19coj on 21/11/2019
+ * Created by Jennifer Coggan on 21/11/2019
  * Methods to take an order
  */
 public class TillOperator extends Staff {
@@ -65,14 +65,12 @@ public class TillOperator extends Staff {
 
     //method to view current order
     protected static void viewCurrentOrder() {
-        System.out.println("The current order is: ");
         TakeOrder.viewOrder();
     }//viewCurrentOrder
 
     //method to remove item from order
     protected static void removeOrderItem(){
         TakeOrder.removeFromOrder();
-        System.out.print( "Item has been removed");
     }//removeOrderItem
 
 }//class

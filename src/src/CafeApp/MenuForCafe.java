@@ -59,12 +59,13 @@ public class MenuForCafe {
    protected static Item selectItem(){
       // Variables and objects required
       Scanner sc = new Scanner(System.in);
-      int choice;
-      seeOptions();
-      System.out.print("Enter the item number: ");
-      choice = sc.nextInt();
-      choice--;
-      return menu.get(choice);
+      int choice =0;
+
+         seeOptions();
+         System.out.print("Enter the item number: ");
+         choice = sc.nextInt();
+         choice--;
+         return menu.get(choice);
    }// Select Item
 
    // Method to select an item from out of stock. Works in a similar fashion to selectItem() above, but is focused on

@@ -3,7 +3,7 @@ package CafeApp;
 import java.util.Scanner;
 
 /**
- * Created by Jen on 26/11/2019
+ * Created by Jennifer Coggan on 26/11/2019
  * Program to provide the counter staff with options of what to do
  */
 public class TillMenu {
@@ -13,7 +13,7 @@ public class TillMenu {
     static  private int choice;
 
     //to be accessible by TillStaff Only
-    protected static void TillMenu () {
+    protected static void TillOpMenu() {
 
         //do..while to keep the menu looping
         do {
