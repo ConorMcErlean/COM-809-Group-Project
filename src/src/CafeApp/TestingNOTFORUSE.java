@@ -15,15 +15,19 @@ public class TestingNOTFORUSE {
       String name = test.next();
       System.out.println("Item Price:");
       double price = test.nextDouble();
+
+
       Item item = new Item(name, price);
-      MenuForCafe.menu.add(MenuForCafe.menu.size(), item );
+      MenuForCafe.menu.add(MenuForCafe.menu.size(), item);
    }
 
    public static void main(String[] args) {
+      Scanner test = new Scanner(System.in);
       MenuForCafe.readyMenu();
-      MenuForCafe.seeOptions();
-      addItem();
-      addItem();
+
+
+     Item thing = MenuForCafe.selectItem();
+      thing.setName(test.next());
       MenuForCafe.seeOptions();
    }//main
 }//class
