@@ -36,7 +36,7 @@ public class MenuForCafe {
    }
 
    // Method to see all available menu items. This is a private method to support the select item method below.
-   private static void seeOptions(){
+   protected static void seeOptions(){
       int counter = 1;
       for (Item item: menu){
          System.out.println(counter + ". " + item.getName());

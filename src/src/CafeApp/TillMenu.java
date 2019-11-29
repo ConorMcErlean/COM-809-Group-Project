@@ -33,43 +33,43 @@ public class TillMenu {
                 case 1:
                     //methods to take order
                     TillOperator.tableOrder();
-                    next = true;
+                    next = false;
                     break;
                 case 2:
                     //method to add to order
                     TillOperator.addToOrder();
-                    next = true;
+                    next = false;
                     break;
                 case 3:
                     //method to view order
                     TillOperator.viewCurrentOrder();
-                    next = true;
+                    next = false;
                     break;
                 case 4:
                     //method to remove from order
                     TillOperator.removeOrderItem();
-                    next = true;
+                    next = false;
                     break;
                 case 5:
                     //method to view out of stock
                     MenuForCafe.viewOutOfStock();
-                    next = true;
+                    next = false;
                     break;
 
                 case 6:
                     //method to print bill to be added
                     System.out.print("You have opted to print a bill");
-                    next = true;
+                    next = false;
                     break;
                 case 7:
                     //method to return to start
                     System.out.print("You have opted to return to log in page");
                     MainMenu.login();
-                    next = false;
+                    next = true;
                     break;
                 default:
                     System.out.println("Option not recognised, please try again");
-                    next = true;;
+                    next = false;;
                     break;
             }//switch
         } while (!next);
