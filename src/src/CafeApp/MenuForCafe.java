@@ -48,10 +48,16 @@ public class MenuForCafe {
    // of stock items.
    protected static void viewOutOfStock(){
       int counter = 1;
+      if (outOfStock.size() > 0){
       for (Item item: outOfStock){
          System.out.println(counter + ". " + item.getName());
          counter++;
       }//for
+          }//if
+      else{
+         System.out.println("Nothing is out of stock.");
+      }
+
    }//View Out of Stock
 
    // Method to select an item from the menu. This is an important method as it allows us to access all the menu items
