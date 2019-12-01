@@ -50,10 +50,10 @@ public class TakeOrder {
 
     //method to view order
     protected static void viewOrder(){
-        int number = 1;
+        int number = 0;
         System.out.println("\nThe current order is: ");
         for (Item item: order) {
-            System.out.println(number + item.getName());
+            System.out.println(number + ". " + item.getName());
             number++;
         }//for
     }//viewOrder
