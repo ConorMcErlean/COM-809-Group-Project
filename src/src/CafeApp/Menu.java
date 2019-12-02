@@ -74,6 +74,7 @@ public class Menu {
             case 3333:
                // Code for entry into manager menu below
                System.out.println("you have entered manager mode");
+               Manager();
                // Exit to login screen
                break;
             case 0000:
