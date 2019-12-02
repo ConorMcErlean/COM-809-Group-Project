@@ -1,10 +1,13 @@
 package CafeApp;
 /*
-Created by: Conor McErlean
-Created on: 02/12/2019
+The code below is source code for the applications menu system, and the relevant
+branches for each of the roles: Till, Kitchen, Management.
 
-Program menu system with branching methods
-
+The menu assumes the user knows their individual login code, but for
+demonstration purposes used the logins below:
+Till: 1111
+Kitchen: 2222
+Management: 3333
 */
 
 import java.util.Scanner;
@@ -15,7 +18,6 @@ public class Menu {
    static private boolean shutdown = false;
    static private boolean logout = false;
    static private int loginCode;
-   static Scanner menuScan = new Scanner(System.in);
    static private int choice;
    static private String greeting = "Welcome to the Cafe app: \n"
          + "\t\t" + "\t) (\n"
@@ -31,53 +33,66 @@ public class Menu {
       StockList.readyMenu();
    }//greeting
 
-   // Menu System for the CafeApp, allows a user to enter a login code an move to the relevant sub-menu.
+   // Method to get user input and protect from incorrect entries.
+   private static int getUserInput(){
+      Scanner keyboard = new Scanner(System.in);
+      int inputvalue;
+      try{
+         inputvalue = keyboard.nextInt();
+         return inputvalue;
+      }//Try
+      catch (Exception issue){
+         inputvalue = 99;
+         return inputvalue;
+      }
+   }//GetUserInput
+
+   // Menu System for the CafeApp, allows a user to enter a login code and move
+   // to the relevant sub-menu.
    protected static void login(){
       //Do while loop to repeat the login section until user chooses to exit.
       do {
-         System.out.println("\nPlease enter your Staff Login Code (or enter 0000 to shut-down).");
+         System.out.println("\nPlease enter your Staff Login Code " +
+               "(or enter 0000 to shut-down).");
          System.out.print("Login: ");
-         loginCode = menuScan.nextInt();
+         loginCode = getUserInput();
 
          // Switch block, leading into submenus
          switch (loginCode) {
-
             case 1111:
                // Code for entry into till menu below
                System.out.println("You have entered the till");
-               TillOpMenu();
+               tillMenu();
                // Exit to login screen
                break;
-
             case 2222:
                // Code for entry into kitchen menu below
                System.out.println("You have entered the kitchen");
                Kitchen();
                // Exit to login screen
                break;
-
             case 3333:
                // Code for entry into manager menu below
                System.out.println("you have entered manager mode");
                // Exit to login screen
                break;
-
             case 0000:
                // Code to exit system and break loop
                System.out.println("System shutting down.");
                shutdown = true;
                break;
-
             default:
                // If incorrect entry is used
-               System.out.println("Sorry, this login code is not recognised. Speak to your manager if there is an error.");
+               System.out.println("Sorry, this login code is not recognised. " +
+                     "Speak to your manager if there is an error.");
                break;
          }// Switch
       }while (!shutdown);
    }//MainMenu
 
-   // Program to provide the counter staff with options of what to do
-   private static void TillOpMenu() {
+   // Program to provide the counter staff with options of what to do, entered
+   // from the main menu.
+   private static void tillMenu() {
 
       //do..while to keep the menu looping
       do {
@@ -90,7 +105,7 @@ public class Menu {
          System.out.println("5. \t View out of Stock");
          System.out.println("6. \t Print Bill");
          System.out.println("7. \t Logout");
-         choice = menuScan.nextInt();
+         choice = getUserInput();
          logout = false;
 
          //Output
@@ -115,7 +130,6 @@ public class Menu {
                //method to view out of stock
                StockList.viewOutOfStock();
                break;
-
             case 6:
                //method to print bill to be added
                System.out.print("You have opted to print a bill");
@@ -130,14 +144,14 @@ public class Menu {
                break;
          }//switch
       } while (!logout);
-
    }//Till Menu
 
-   // Below is the method that will be used in the main menu to access the kitchen menu.
+   // Below is the method that will be used in the main menu to access the
+   // kitchen menu.
    private static void Kitchen(){
-
-      // The below do..while loop will allow you to perform as many actions as required in the kitchen staff menu.
-      // Then when finished it will allow to logout by setting a boolean value to true.
+      // The below do..while loop will allow you to perform as many actions as
+      // required in the kitchen staff menu then when finished it will allow
+      // logout by setting a boolean value to true.
       do {
          // User prompt
          System.out.println("\nWhat do you require?");
@@ -146,26 +160,24 @@ public class Menu {
                + "\n3. Mark item out of stock"
                + "\n4. Mark item back in stock"
                + "\n5. Logout");
-         choice = menuScan.nextInt();
+         choice = getUserInput();
+         logout= false;
 
-         // Switch block where each option calls the static methods of the Kitchen Class to complete the function.
+         // Switch block where each option calls the static methods of the
+         // Kitchen Class to complete the function.
          switch (choice){
             case 1:
                Kitchen.viewOrders("Orders");
-               logout = false;
                break;
             case 2:
                System.out.println("Out of stock items:");
                StockList.viewOutOfStock();
-               logout = false;
                break;
             case 3:
                Kitchen.markOutOfStock(StockList.selectItem());
-               logout = false;
                break;
             case 4:
                Kitchen.markBackInStock(StockList.selectOutOfStock());
-               logout = false;
                break;
             case 5:
                System.out.println("Logging out");
@@ -173,19 +185,17 @@ public class Menu {
                break;
             default:
                System.out.println("Choice not recognised");
-               logout = false;
                break;
          }// Switch
-      } while (!logout); // This segment means while (logout is not true).
+      } while (!logout);
    }// Kitchen
 
-
-   // This method will be used in the main menu to access the manager menu.
+   // This method will be used in the main menu to access the manager menu,
+   // providing the managerial functions.
    protected static void Manager() {
-
-
-      //The following do..while loop will allow you to perform as many actions as required within the ManagerMenu
-      //When finished, you can logout by setting a boolean value to true.
+      //The following do..while loop will allow you to perform as many actions
+      // as required within the ManagerMenu when finished, you can logout by
+      // setting a boolean value to true.
       do {
          System.out.println("\nPlease select an option.");
          System.out.println("1. Add item to menu"
@@ -196,36 +206,30 @@ public class Menu {
                + "\n6. Mark item out of stock"
                + "\n7. Mark item back in stock"
                + "\n8. Logout");
-         choice = menuScan.nextInt();
+         choice = getUserInput();
+         logout = false;
 
          switch (choice) {
             case 1:
                Management.addItem();
-               logout = false;
                break;
             case 2:
                Management.removeItem();
-               logout = false;
                break;
             case 3:
                Kitchen.viewOrders("Orders");
-               logout = false;
                break;
             case 4:
 //                    Management.applyDiscount();
-               logout = false;
                break;
             case 5:
                System.out.println("Out of stock items:");
                StockList.viewOutOfStock();
-               logout = false;
             case 6:
                Kitchen.markOutOfStock(StockList.selectItem());
-               logout = false;
                break;
             case 7:
                Kitchen.markBackInStock(StockList.selectOutOfStock());
-               logout = false;
                break;
             case 8:
                System.out.println("Logging out");
@@ -233,10 +237,9 @@ public class Menu {
                break;
             default:
                System.out.println("Choice not recognised");
-               logout = false;
                break;
          }// Switch
       } while (!logout);
-   }
+   }//Manager Menu
 
 }//class
