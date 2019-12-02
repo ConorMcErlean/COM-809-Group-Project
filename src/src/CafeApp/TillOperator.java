@@ -77,17 +77,48 @@ public class TillOperator extends Staff {
     }//removeOrderItem
 
 
-
-    public static void printBill() {
+//method to print the total cost - bill for the table
+    protected static void printBill() {
+        //variables
             int number = 1;
+            //for loop to get the name and price of each item in the view order list
             System.out.println("\nThe bill for table " + getTableNumber() + " is: ");
             for (Item item: TakeOrder.order) {
                 System.out.println(number + ". " + item.getName() + "\t\t£:" + df.format(item.getPrice()));
+                //keep a running total of bill
                 total = total + item.getPrice();
                 number++;
             }//for
+        //total cost of bill
         System.out.println("\nThe total bill is: £ " + df.format(total));
     }//printReceipt
+
+    protected static double getBillTotal(){
+        return total;
+    }
+    protected static void takePayment() {
+       //variables
+        double  amountTendered, changeDue, billTotal = getBillTotal();
+
+        //provide amount due:
+        System.out.println("\nThe Total Bill for table " + getTableNumber() +  "is: £ " + df.format(billTotal) );
+
+        //prompt for amount received
+        System.out.println("Enter amount Tendered: £ ");
+        amountTendered = keyboard.nextDouble();
+
+        //calculate change
+        changeDue = amountTendered - billTotal;
+
+        //output statements
+        System.out.println("Payment for table " + getTableNumber());
+        System.out.println("Amount Due: \t\t\t£" + df.format(billTotal) );
+        System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered) );
+        System.out.println("Change Due:\t\t\t\t£" + df.format(changeDue));
+
+
+
+    }
 
 
 }//class
