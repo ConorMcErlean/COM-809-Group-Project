@@ -31,7 +31,7 @@ public class Till extends Staff {
 
 
     // method for getting table number/ amount of people at table:
-    private static void tableInfo() {
+    protected static void tableInfo() {
         System.out.print("\nEnter Table Number: ");
         int tableNumber = keyboard.nextInt();
         Till.setTableNumber(tableNumber);
@@ -41,37 +41,37 @@ public class Till extends Staff {
     }//takeOrder
 
     //set Methods for table number/ amount of people at table
-    private static void setTableNumber(int tableNo) {
+    protected static void setTableNumber(int tableNo) {
         tableNumber = tableNo;
     }//setTableNumber
 
-    private static void setNumAtTable(int peopleAtTable) {
+    protected static void setNumAtTable(int peopleAtTable) {
 
         numAtTable = peopleAtTable;
     }//setNumAtTable
 
     //methods to get table number and number of people at the table:
-    private static int getTableNumber() {
+    protected static int getTableNumber() {
         return tableNumber;
     }//geTableNumber
 
-    public static int getNumAtTable() {
+    protected static int getNumAtTable() {
         return numAtTable;
     }//geNumAtTable
 
     //method to take table order
-    private static void tableOrder(){
+    protected static void tableOrder(){
         tableInfo() ;
         startOrder();
     }//tableOrder
 
 
     //method to view current order
-    private static void viewCurrentOrder() { viewOrder();
+    protected static void viewCurrentOrder() { viewOrder();
     }//viewCurrentOrder
 
     //method to remove item from order
-    private static void removeOrderItem(){
+    protected static void removeOrderItem(){
         removeFromOrder();
     }//removeOrderItem
 
@@ -92,7 +92,7 @@ public class Till extends Staff {
     }//printReceipt
 
     //method to start to take order
-    private static void startOrder() {
+    protected static void startOrder() {
         int choice;
         char response = 'y';
         while (response == 'y') {
@@ -105,7 +105,7 @@ public class Till extends Staff {
     }//startOrder
 
     //method to add to order
-    private static void addToOrder() {
+    protected static void addToOrder() {
         char response = 'y';
         System.out.print("\nAdd to Order: \n");
         while (response == 'y') {
@@ -117,7 +117,7 @@ public class Till extends Staff {
 
     }//addToOrder
 
-    private static double getBillTotal(){
+    protected static double getBillTotal(){
         return total;
     }
     protected static void takePayment() {
@@ -145,7 +145,7 @@ public class Till extends Staff {
 
     }
     //method to view order
-    private static void viewOrder(){
+    protected static void viewOrder(){
         int number = 1;
         System.out.println("\nThe current order is: ");
         for (Item item: order) {
@@ -156,7 +156,7 @@ public class Till extends Staff {
 
 
     //method to remove from order
-    private static void removeFromOrder (){
+    protected static void removeFromOrder (){
         int choice;
         viewOrder();
         System.out.print("Remove number: ");
