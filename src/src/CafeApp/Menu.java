@@ -174,6 +174,7 @@ public class Menu {
          switch (choice){
             case 1:
                Kitchen.viewOrders("Orders");
+               Till.viewCurrentOrder();
                break;
             case 2:
                System.out.println("Out of stock items:");
