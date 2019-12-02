@@ -54,6 +54,7 @@ public class MainMenu {
                 case 3333:
                     // Code for entry into manager menu below
                     System.out.println("you have entered manager mode");
+                    ManagerMenu.Manager();
                     // Exit to login screen
                     logoutNow = false;
                     break;

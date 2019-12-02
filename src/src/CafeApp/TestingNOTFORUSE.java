@@ -23,8 +23,9 @@ public class TestingNOTFORUSE {
 
    public static void main(String[] args) {
       Scanner test = new Scanner(System.in);
-      MenuForCafe.readyMenu();
 
+      System.out.println("What item would you like to change?");
+      MenuForCafe.readyMenu();
 
      Item thing = MenuForCafe.selectItem();
       thing.setName(test.next());
