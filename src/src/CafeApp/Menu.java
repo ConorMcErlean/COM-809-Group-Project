@@ -105,7 +105,8 @@ public class Menu {
          System.out.println("4. \t Remove Item from Order");
          System.out.println("5. \t View out of Stock");
          System.out.println("6. \t Print Bill");
-         System.out.println("7. \t Logout");
+         System.out.println("7. \t Take Payment");
+         System.out.println("8. \t Logout");
          choice = getUserInput();
          logout = false;
 
@@ -136,6 +137,10 @@ public class Menu {
                System.out.print("You have opted to print a bill");
                break;
             case 7:
+               // Method to take Payment
+               System.out.println("Paying bill:");
+               Till.takePayment();
+            case 8:
                //method to return to start
                System.out.print("You have opted to return to log in page");
                logout = true;
