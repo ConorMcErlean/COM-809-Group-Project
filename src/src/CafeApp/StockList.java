@@ -1,4 +1,5 @@
-package CafeApp;/*
+package CafeApp;
+/*
 Created by: Conor McErlean
 Created on: 26/11/2019
 
@@ -9,7 +10,7 @@ retrieved for use elsewhere in the program.
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MenuForCafe {
+public class StockList {
    // Items to be sold go below, this allows us to create an instance of the Item class for each menu item as such
    // each item will have a name & a price.
    private static Item americano = new Item("Americano", 2.00);
@@ -65,7 +66,7 @@ public class MenuForCafe {
    protected static Item selectItem(){
       // Variables and objects required
       Scanner sc = new Scanner(System.in);
-      int choice =0;
+      int choice;
 
          seeOptions();
          System.out.print("Enter the item number: ");
