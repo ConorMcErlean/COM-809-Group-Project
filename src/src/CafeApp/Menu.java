@@ -3,7 +3,8 @@ package CafeApp;
 Created by: Conor McErlean
 Created on: 02/12/2019
 
-Program menu system
+Program menu system with branching methods
+
 */
 
 import java.util.Scanner;
@@ -13,8 +14,8 @@ public class Menu {
    // Objects & Variables required for main menu
    static private boolean shutdown = false;
    static private boolean logout = false;
-   static private int logincode;
-   static private Scanner menuScan = new Scanner(System.in);
+   static private int loginCode;
+   static Scanner menuScan = new Scanner(System.in);
    static private int choice;
    static private String greeting = "Welcome to the Cafe app: \n"
          + "\t\t" + "\t) (\n"
@@ -36,10 +37,10 @@ public class Menu {
       do {
          System.out.println("\nPlease enter your Staff Login Code (or enter 0000 to shut-down).");
          System.out.print("Login: ");
-         logincode = menuScan.nextInt();
+         loginCode = menuScan.nextInt();
 
          // Switch block, leading into submenus
-         switch (logincode) {
+         switch (loginCode) {
 
             case 1111:
                // Code for entry into till menu below
@@ -177,6 +178,8 @@ public class Menu {
          }// Switch
       } while (!logout); // This segment means while (logout is not true).
    }// Kitchen
+
+
    // This method will be used in the main menu to access the manager menu.
    protected static void Manager() {
 
@@ -209,7 +212,7 @@ public class Menu {
                logout = false;
                break;
             case 4:
-//                    ManagementStaff.applyDiscount();
+//                    Management.applyDiscount();
                logout = false;
                break;
             case 5:
