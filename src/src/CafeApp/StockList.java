@@ -1,15 +1,16 @@
-package CafeApp;/*
+package CafeApp;
+/*
 Created by: Conor McErlean
 Created on: 26/11/2019
 
-Class should act as the menu for the cafe, storing all menu items & providing methods to allow those items to be
+Class should act as the stock-list for the cafe, storing all menu items & providing methods to allow those items to be
 retrieved for use elsewhere in the program.
 */
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MenuForCafe {
+public class StockList {
    // Items to be sold go below, this allows us to create an instance of the Item class for each menu item as such
    // each item will have a name & a price.
    private static Item americano = new Item("Americano", 2.00);
@@ -21,7 +22,7 @@ public class MenuForCafe {
 
    // Two Key array lists that will be needed. These store the items above in a list for access in other parts of the
    // program. Otherwise we'd need to create a new pointer to the object in each class.
-   static ArrayList<Item> outOfStock = new ArrayList<Item>();
+   private static ArrayList<Item> outOfStock = new ArrayList<Item>();
    static ArrayList<Item> menu = new ArrayList<Item>();
 
    // Prepares the menu for the cafe, simply adds the items below into the list 'menu'.
@@ -36,7 +37,7 @@ public class MenuForCafe {
    }
 
    // Method to see all available menu items. This is a private method to support the select item method below.
-   protected static void seeOptions(){
+   private static void seeOptions(){
       int counter = 1;
       for (Item item: menu){
          System.out.println(counter + ". " + item.getName());
@@ -65,7 +66,7 @@ public class MenuForCafe {
    protected static Item selectItem(){
       // Variables and objects required
       Scanner sc = new Scanner(System.in);
-      int choice =0;
+      int choice;
 
          seeOptions();
          System.out.print("Enter the item number: ");

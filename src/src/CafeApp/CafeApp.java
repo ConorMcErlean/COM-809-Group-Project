@@ -9,10 +9,10 @@ After this it opens the login system.
 
 public class CafeApp {
    public static void main(String[] args) {
-      TillOperator till1 = new TillOperator(1111);
-      MenuForCafe.readyMenu();
-      MainMenu.greeting();
-      MainMenu.login();
+      // Method to greet users on initial boot & Initialise menu
+      Menu.greeting();
+      // Menu for staff to login
+      Menu.login();
    }//main
 }//class
 
