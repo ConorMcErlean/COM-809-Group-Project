@@ -3,7 +3,7 @@ package CafeApp;
 Created by: Conor McErlean
 Created on: 26/11/2019
 
-Class should act as the menu for the cafe, storing all menu items & providing methods to allow those items to be
+Class should act as the stock-list for the cafe, storing all menu items & providing methods to allow those items to be
 retrieved for use elsewhere in the program.
 */
 
@@ -22,7 +22,7 @@ public class StockList {
 
    // Two Key array lists that will be needed. These store the items above in a list for access in other parts of the
    // program. Otherwise we'd need to create a new pointer to the object in each class.
-   static ArrayList<Item> outOfStock = new ArrayList<Item>();
+   private static ArrayList<Item> outOfStock = new ArrayList<Item>();
    static ArrayList<Item> menu = new ArrayList<Item>();
 
    // Prepares the menu for the cafe, simply adds the items below into the list 'menu'.
@@ -37,7 +37,7 @@ public class StockList {
    }
 
    // Method to see all available menu items. This is a private method to support the select item method below.
-   protected static void seeOptions(){
+   private static void seeOptions(){
       int counter = 1;
       for (Item item: menu){
          System.out.println(counter + ". " + item.getName());

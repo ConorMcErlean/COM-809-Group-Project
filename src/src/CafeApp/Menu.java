@@ -76,7 +76,7 @@ public class Menu {
    }//MainMenu
 
    // Program to provide the counter staff with options of what to do
-   protected static void TillOpMenu() {
+   private static void TillOpMenu() {
 
       //do..while to keep the menu looping
       do {
@@ -133,7 +133,7 @@ public class Menu {
    }//Till Menu
 
    // Below is the method that will be used in the main menu to access the kitchen menu.
-   protected static void Kitchen(){
+   private static void Kitchen(){
 
       // The below do..while loop will allow you to perform as many actions as required in the kitchen staff menu.
       // Then when finished it will allow to logout by setting a boolean value to true.
@@ -177,6 +177,63 @@ public class Menu {
          }// Switch
       } while (!logout); // This segment means while (logout is not true).
    }// Kitchen
+   // This method will be used in the main menu to access the manager menu.
+   protected static void Manager() {
 
+
+      //The following do..while loop will allow you to perform as many actions as required within the ManagerMenu
+      //When finished, you can logout by setting a boolean value to true.
+      do {
+         System.out.println("\nPlease select an option.");
+         System.out.println("1. Add item to menu"
+               + "\n2. Remove item from the menu"
+               + "\n3. View current orders"
+               + "\n4. Apply discount"
+               + "\n5.View out of stock"
+               + "\n6. Mark item out of stock"
+               + "\n7. Mark item back in stock"
+               + "\n8. Logout");
+         choice = menuScan.nextInt();
+
+         switch (choice) {
+            case 1:
+               Management.addItem();
+               logout = false;
+               break;
+            case 2:
+               Management.removeItem();
+               logout = false;
+               break;
+            case 3:
+               Kitchen.viewOrders("Orders");
+               logout = false;
+               break;
+            case 4:
+//                    ManagementStaff.applyDiscount();
+               logout = false;
+               break;
+            case 5:
+               System.out.println("Out of stock items:");
+               StockList.viewOutOfStock();
+               logout = false;
+            case 6:
+               Kitchen.markOutOfStock(StockList.selectItem());
+               logout = false;
+               break;
+            case 7:
+               Kitchen.markBackInStock(StockList.selectOutOfStock());
+               logout = false;
+               break;
+            case 8:
+               System.out.println("Logging out");
+               logout = true;
+               break;
+            default:
+               System.out.println("Choice not recognised");
+               logout = false;
+               break;
+         }// Switch
+      } while (!logout);
+   }
 
 }//class
