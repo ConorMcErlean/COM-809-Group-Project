@@ -22,6 +22,7 @@ public class TillOperator extends Staff {
     //variables used throughout
     private static int numAtTable;
     private static int tableNumber;
+    private static double total =0.00;
 
 
 
@@ -79,7 +80,6 @@ public class TillOperator extends Staff {
 
     public static void printBill() {
             int number = 1;
-            double total =0.00;
             System.out.println("\nThe bill for table " + getTableNumber() + " is: ");
             for (Item item: TakeOrder.order) {
                 System.out.println(number + ". " + item.getName() + "\t\t£:" + df.format(item.getPrice()));
