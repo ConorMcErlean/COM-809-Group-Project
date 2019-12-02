@@ -44,7 +44,7 @@ public class ManagerMenu {
                     logout = false;
                     break;
                 case 4:
-                    ManagementStaff.applyDiscount();
+//                    ManagementStaff.applyDiscount();
                     logout = false;
                     break;
                 case 5:

@@ -37,23 +37,25 @@ static Scanner keyboard = new Scanner(System.in);
         System.out.println("Please enter the item you wish to remove: ");
         itemName = keyboard.nextLine();
 
-        for(int removeItem =0; removeItem < MenuForCafe.menu.size();removeItem++){
-            if(itemName.equals(MenuForCafe.menu.get(removeItem).getName())){
-                MenuForCafe.menu.remove(MenuForCafe.menu.get(removeItem));
-            }//if
-        }//for
+//        for(int removeItem =0; removeItem < MenuForCafe.menu.size();removeItem++){
+//            if(itemName.equalsIgnoreCase(MenuForCafe.menu.get(removeItem).getName())){
+//                MenuForCafe.menu.remove(MenuForCafe.menu.get(removeItem));
+//            }//if
+//        }//for
 
+        Item dueforremoval = MenuForCafe.selectItem();
+        MenuForCafe.menu.remove(dueforremoval);
     }//removeItem
 
-    protected static void applyDiscount() {
-
-       double discount;
-
-       System.out.println("Please enter how much discount you wish to apply: ");
-       discount = keyboard.nextDouble();
-
-       
-
-        }
+//    protected static double applyDiscount(double total) {
+//
+//       double discount;
+//
+//       System.out.println("Please enter how much discount you wish to apply: ");
+//       discount = keyboard.nextDouble();
+//
+//
+//
+//        }
 
     }
