@@ -58,7 +58,7 @@ public class TillMenu {
 
                 case 6:
                     //method to print bill to be added
-                    System.out.print("You have opted to print a bill");
+                    TillOperator.printBill();
                     next = false;
                     break;
                 case 7:

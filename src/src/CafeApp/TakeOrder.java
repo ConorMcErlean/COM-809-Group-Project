@@ -43,6 +43,7 @@ public class TakeOrder {
             order.add(MenuForCafe.selectItem());;
             System.out.print("Add another item (y or n)?: ");
             response=keyboard.nextLine().charAt(0);
+
             System.out.print("\n");
         }//while
 

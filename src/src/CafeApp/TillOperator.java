@@ -1,5 +1,6 @@
 package CafeApp;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class TillOperator extends Staff {
 
 
     public static Scanner keyboard = new Scanner(System.in);
+    public static DecimalFormat df = new DecimalFormat("0.00");
 
     //variables used throughout
     private static int numAtTable;
@@ -73,6 +75,19 @@ public class TillOperator extends Staff {
         TakeOrder.removeFromOrder();
     }//removeOrderItem
 
+
+
+    public static void printBill() {
+            int number = 1;
+            double total =0.00;
+            System.out.println("\nThe bill for table " + getTableNumber() + " is: ");
+            for (Item item: TakeOrder.order) {
+                System.out.println(number + ". " + item.getName() + "\t\t£:" + df.format(item.getPrice()));
+                total = total + item.getPrice();
+                number++;
+            }//for
+        System.out.println("\nThe total bill is: £ " + df.format(total));
+    }//printReceipt
+
+
 }//class
-
-
