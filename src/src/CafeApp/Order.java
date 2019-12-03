@@ -99,4 +99,28 @@ public class Order {
       System.out.println("Change Due:\t\t\t\t£" + df.format(changeDue));
    }//Take Payment
 
+   // Accessors & Mutators
+   public boolean isOrderComplete() {
+      return orderComplete;
+   }
+
+   public void setOrderComplete(boolean orderComplete) {
+      this.orderComplete = orderComplete;
+   }
+
+   public boolean isOrderCooked() {
+      return orderCooked;
+   }
+
+   public void setOrderCooked(boolean orderCooked) {
+      this.orderCooked = orderCooked;
+   }
+
+   public String getOrderName() {
+      return orderName;
+   }
+
+   public double getOrderTotalPrice() {
+      return orderTotalPrice;
+   }
 }//class

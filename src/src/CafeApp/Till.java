@@ -12,58 +12,49 @@ import java.util.Scanner;
 
 public class Till extends Staff {
     // Static Variables
-    private static DecimalFormat df = new DecimalFormat("0.00");
-    private static double total;
     private static boolean next = true;
-    private static int numAtTable;
-    private static int tableNumber;
 
     // Order Arrays
-    static private ArrayList<Item> order = new ArrayList<Item>();
+    static private ArrayList<Order> orders = new
+          ArrayList<Order>();
 
     //defaultConstructor
     protected Till(int loginCode) {
         super(loginCode);
     }//defaultConstructor
 
-    // method for getting table number/ amount of people at table:
-    protected static void tableInfo() {
-        int tableNumber = UserInput.getIntInput("\nEnter Table Number: ");
-        Till.setTableNumber(tableNumber);
-        int noOfPeople = UserInput.getIntInput("Number of people at table: ");
-        Till.setNumAtTable(noOfPeople);
-    }//takeOrder
-
-    //set Methods for table number/ amount of people at table
-    protected static void setTableNumber(int tableNo) {
-        tableNumber = tableNo;
-    }//setTableNumber
-
-    protected static void setNumAtTable(int peopleAtTable) {
-        numAtTable = peopleAtTable;
-    }//setNumAtTable
-
-    //methods to get table number and number of people at the table:
-    protected static int getTableNumber() {
-        return tableNumber;
-    }//geTableNumber
-    protected static int getNumAtTable() {
-        return numAtTable;
-    }//geNumAtTable
-
     //method to take table order
     protected static void tableOrder(){
-        tableInfo() ;
         startOrder();
     }//tableOrder
 
+    // Method to view all orders
+    protected static void viewAllOrders() {
+        int counter = 1;
+        for (Order order: orders){
+            System.out.print(counter + order.getOrderName());
+            counter++;
+        }
+    }//viewAllOrders
+
+    //Method to select an order
+    protected static Order getOrder(){
+        viewAllOrders();
+        int selection = UserInput.getIntInput("Choose an order:");
+        selection--;
+        return orders.get(selection);
+    }
+
     //method to view current order
-    protected static void viewCurrentOrder() { viewOrder();
+    protected static void viewCurrentOrder() {
+        Order order = getOrder();
+        order.viewOrder();
     }//viewCurrentOrder
 
     //method to remove item from order
     protected static void removeOrderItem(){
-        removeFromOrder();
+        Order order = getOrder();
+        order.removeFromOrder();
     }//removeOrderItem
 
     //method to print the total cost - bill for the table
