@@ -18,8 +18,5 @@ public class Staff{
 
     //set loginID
     protected void setLoginID(int loginNo) { loginID = loginNo; }
-
     protected int getLoginID() {return loginID;}
-
-
 }//class

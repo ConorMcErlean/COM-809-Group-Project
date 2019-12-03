@@ -1,37 +1,33 @@
 package CafeApp;/*
-Created by: Conor McErlean
-Created on: 02/12/2019
 
-Additional Comments...
+Management functions class created by Matthew McCafferty.
 */
 
 import java.text.DecimalFormat;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Management extends Staff {
    public Management (int loginID) { super(loginID); } // Default Constructor
-   private static Scanner keyboard = new Scanner(System.in);
+
    private static DecimalFormat df = new DecimalFormat("0.00");
 
    protected static void addItem() {
       String name;
       double price;
-      int counter = 1;
-
-      for (Item newItem : StockList.menu) {
-         System.out.print("Enter Item Name: ");
-         name = keyboard.nextLine();
-         System.out.print("Enter price: £ ");
-         price = keyboard.nextDouble();
+      ArrayList<Item> menu = StockList.getMenu();
+      for (Item newItem : menu) {
+         name = UserInput.getString("Enter Item Name: ");
+         price = UserInput.getDoubleInput("Enter price: £ ");
          newItem.setName(name);
          newItem.setPrice(price);
-         StockList.menu.add(newItem);
+         menu.add(newItem);
       }
-   }
+   }//addItem()
 
    protected static void removeItem() {
+      ArrayList<Item> menu = StockList.getMenu();
       Item dueForRemoval = StockList.selectItem();
-      StockList.menu.remove(dueForRemoval);
+      menu.remove(dueForRemoval);
    }//removeItem
 
 }//class

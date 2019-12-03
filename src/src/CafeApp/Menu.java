@@ -33,20 +33,6 @@ public class Menu {
       StockList.readyMenu();
    }//greeting
 
-   // Method to get user input and protect from incorrect entries.
-   private static int getUserInput(){
-      Scanner keyboard = new Scanner(System.in);
-      int inputvalue;
-      try{
-         inputvalue = keyboard.nextInt();
-         return inputvalue;
-      }//Try
-      catch (Exception issue){
-         inputvalue = 99;
-         return inputvalue;
-      }
-   }//GetUserInput
-
    // Menu System for the CafeApp, allows a user to enter a login code and move
    // to the relevant sub-menu.
    protected static void login(){
@@ -54,8 +40,7 @@ public class Menu {
       do {
          System.out.println("\nPlease enter your Staff Login Code " +
                "(or enter 0000 to shut-down).");
-         System.out.print("Login: ");
-         loginCode = getUserInput();
+         loginCode = UserInput.getIntInput("Login: ");
 
          // Switch block, leading into submenus
          switch (loginCode) {
@@ -107,7 +92,7 @@ public class Menu {
          System.out.println("6. \t Print Bill");
          System.out.println("7. \t Take Payment");
          System.out.println("8. \t Logout");
-         choice = getUserInput();
+         choice = UserInput.getIntInput("Enter Choice: ");
          logout = false;
 
          //Output
@@ -166,14 +151,13 @@ public class Menu {
                + "\n3. Mark item out of stock"
                + "\n4. Mark item back in stock"
                + "\n5. Logout");
-         choice = getUserInput();
+         choice = UserInput.getIntInput("Enter Choice: ");
          logout= false;
 
          // Switch block where each option calls the static methods of the
          // Kitchen Class to complete the function.
          switch (choice){
             case 1:
-               Kitchen.viewOrders("Orders");
                Till.viewCurrentOrder();
                break;
             case 2:
@@ -181,10 +165,10 @@ public class Menu {
                StockList.viewOutOfStock();
                break;
             case 3:
-               Kitchen.markOutOfStock(StockList.selectItem());
+               Kitchen.markOutOfStock();
                break;
             case 4:
-               Kitchen.markBackInStock(StockList.selectOutOfStock());
+               Kitchen.markBackInStock();
                break;
             case 5:
                System.out.println("Logging out");
@@ -213,7 +197,7 @@ public class Menu {
                + "\n6. Mark item out of stock"
                + "\n7. Mark item back in stock"
                + "\n8. Logout");
-         choice = getUserInput();
+         choice = UserInput.getIntInput("Enter Choice: ");
          logout = false;
 
          switch (choice) {
@@ -224,7 +208,7 @@ public class Menu {
                Management.removeItem();
                break;
             case 3:
-               Kitchen.viewOrders("Orders");
+               Till.viewOrder();
                break;
             case 4:
 //                    Management.applyDiscount();
@@ -233,10 +217,10 @@ public class Menu {
                System.out.println("Out of stock items:");
                StockList.viewOutOfStock();
             case 6:
-               Kitchen.markOutOfStock(StockList.selectItem());
+               Kitchen.markOutOfStock();
                break;
             case 7:
-               Kitchen.markBackInStock(StockList.selectOutOfStock());
+               Kitchen.markBackInStock();
                break;
             case 8:
                System.out.println("Logging out");

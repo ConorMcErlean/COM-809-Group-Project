@@ -4,7 +4,8 @@ Created by: Conor McErlean
 Created on: 19/11/2019
 
 Class for menu items.
-Allows each item once instantiated to have both a name and a price, alongside holding other relevant instance variables.
+Allows each item once instantiated to have both a name and a price, alongside
+holding other relevant instance variables.
 */
 
 import java.text.DecimalFormat;
@@ -18,7 +19,6 @@ public class Item {
    DecimalFormat df = new DecimalFormat("0.00");
 
    // Constructors
-
    public Item(String itemName, double itemPrice){
       name = itemName;
       price= itemPrice;
@@ -29,7 +29,8 @@ public class Item {
    public Item(){
    }// Default Constructor
 
-   public Item(String itemName, double itemPrice, boolean itemInStock, int introDiscount){
+   public Item(String itemName, double itemPrice, boolean itemInStock,
+               int introDiscount){
       name = itemName;
       price = itemPrice;
       inStock = itemInStock;
@@ -37,40 +38,40 @@ public class Item {
    }// Alternate constructor for when all fields are known
 
    // Class Methods (Accessors and Mutators)
-   // All have been created but some may be unnecessary. Additional methods can be removed at a later date.
+   // All have been created but some may be unnecessary.
+   // Additional methods can be removed at a later date.
 
-   public String getName() {
+   protected String getName() {
       return name;
    }
 
-   public void setName(String name) {
+   protected void setName(String name) {
       this.name = name;
    }
 
-   public double getPrice() {
+   protected double getPrice() {
       return price;
    }
 
-   public void setPrice(double price) {
+   protected void setPrice(double price) {
       this.price = price;
    }
 
-   public boolean getInStock() {
+   protected boolean getInStock() {
       return inStock;
    }
 
-   public void setInStock(boolean inStock) {
+   protected void setInStock(boolean inStock) {
       this.inStock = inStock;
    }
 
-   public int getDiscount() {
+   protected int getDiscount() {
       return discount;
    }
 
-   public void setDiscount(int discount) {
+   protected void setDiscount(int discount) {
       this.discount = discount;
    }
-
 
    public String toString(){
       if (inStock){
@@ -83,8 +84,5 @@ public class Item {
                + ", it is currently out of stock and had a discount of "
                + discount + "%.\n";
       }//else
-
-   }
-
-
+   }//toString()
 }//class

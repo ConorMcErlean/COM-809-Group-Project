@@ -1,5 +1,6 @@
 package CafeApp;
 
+import javax.jws.soap.SOAPBinding;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,67 +26,11 @@ public class Till extends Staff {
         super(loginCode);
     }//defaultConstructor
 
-    // Method for getting an integer input
-    private static int getIntegerInput(){
-        Scanner keyboard = new Scanner(System.in);
-        int inputValue;
-        try{
-            inputValue = keyboard.nextInt();
-            return inputValue;
-        }//Try
-        catch (Exception issue){
-            inputValue = 99;
-            return inputValue;
-        }
-    }//GetIntegerInput
-
-    // Method for getting an double input
-    private static double getDoubleInput(){
-        Scanner keyboard = new Scanner(System.in);
-        double inputValue;
-        try{
-            inputValue = keyboard.nextDouble();
-            return inputValue;
-        }//Try
-        catch (Exception issue){
-            System.out.println("Incorrect value entered, defaulting to £0.00");
-            inputValue = 0.00;
-            return inputValue;
-        }
-    }//GetDoubleInput
-
-    // Method for getting a character input
-    private static char getCharInput(){
-        Scanner keyboard = new Scanner(System.in);
-        String inputValue;
-        char returnValue;
-        try{
-            inputValue = keyboard.next();
-            returnValue = inputValue.toLowerCase().charAt(0);
-
-            if (returnValue == 'n' || returnValue == 'y') {
-                return returnValue;
-            }
-            else{
-                System.out.println("Incorrect value entered, defaulting to " +
-                      "No.");
-                return 'n';
-            }
-        }//Try
-        catch (Exception issue){
-            System.out.println("Incorrect value entered, defaulting to No.");
-            returnValue = 'n';
-            return returnValue;
-        }
-    }//GetCharInput
-
     // method for getting table number/ amount of people at table:
     protected static void tableInfo() {
-        System.out.print("\nEnter Table Number: ");
-        int tableNumber = getIntegerInput();
+        int tableNumber = UserInput.getIntInput("\nEnter Table Number: ");
         Till.setTableNumber(tableNumber);
-        System.out.print("Number of people at table: ");
-        int noOfPeople = getIntegerInput();
+        int noOfPeople = UserInput.getIntInput("Number of people at table: ");
         Till.setNumAtTable(noOfPeople);
     }//takeOrder
 
@@ -95,7 +40,6 @@ public class Till extends Staff {
     }//setTableNumber
 
     protected static void setNumAtTable(int peopleAtTable) {
-
         numAtTable = peopleAtTable;
     }//setNumAtTable
 
@@ -152,8 +96,7 @@ public class Till extends Staff {
         System.out.print("\nAdd to Order: \n");
         while (response == 'y') {
             order.add(StockList.selectItem());
-            System.out.print("Add another item (y or n)?: ");
-            response=getCharInput();
+            response= UserInput.getCharInput("Add another item (y or n)?: ");
             System.out.print("\n");
         }//while
     }//addToOrder
@@ -169,8 +112,7 @@ public class Till extends Staff {
               " is: £" + df.format(billTotal) );
 
         //prompt for amount received
-        System.out.print("Enter amount Tendered: £ ");
-        amountTendered = getDoubleInput();
+        amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
 
         //calculate change
         changeDue = amountTendered - billTotal;
@@ -194,13 +136,16 @@ public class Till extends Staff {
 
     //method to remove from order
     protected static void removeFromOrder (){
-        Scanner keyboard = new Scanner(System.in);
-        int choice;
-        viewOrder();
-        System.out.print("Remove number: ");
-        choice = keyboard.nextInt();
-        order.remove(choice);
-        System.out.print( "Item has been removed\n");
+        try{
+            int choice;
+            viewOrder();
+            choice = UserInput.getIntInput("Remove number: ");
+            order.remove(choice);
+            System.out.print( "Item has been removed\n");
+        }//try
+        catch (Exception issue){
+            System.out.println("No such item exists.");
+        }//Catch
     }//removeFromOrder
 }//class
 
