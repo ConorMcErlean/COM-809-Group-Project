@@ -38,7 +38,7 @@ public class Order {
       int number = 1;
       System.out.println("\nThe current order is: ");
       for (Item item: order) {
-         System.out.println(number + item.getName());
+         System.out.println(number + ". "+ item.getName());
          number++;
       }//for
    }//viewOrder
@@ -57,6 +57,11 @@ public class Order {
       }//Catch
    }//removeFromOrder
 
+   // Method to add to order objects arraylist.
+   protected void add(Item item){
+      order.add(item);
+   }
+
    //method to print the total cost - bill for the table
    protected void printBill() {
       //variables
@@ -67,37 +72,43 @@ public class Order {
       for (Item item: order) {
          System.out.println(item.getName() + "\t\t£:" +
                df.format(item.getPrice()));
-         //keep a running total of bill
-         orderTotalPrice += item.getPrice();
-         number++;
       }//for
+      calculateTotal();
       //total cost of bill
       System.out.println("The total bill is: £ " + df.format(orderTotalPrice));
    }//printBill
 
    protected double getBillTotal(){
+      calculateTotal();
       return orderTotalPrice;
    }
 
-   protected void takePayment() {
-      //variables
-      double  amountTendered, changeDue;
-      //provide amount due:
-      System.out.println("\nThe Total Bill for order " + orderName +
-            " is: £" + df.format(orderTotalPrice) );
+   private void calculateTotal(){
+      // If loop below should prevent doubling of bill price when two receipts
+      // are printed
+      if (orderTotalPrice == 0) {
+         for (Item item : order) {
+            //keep a running total of bill
+            orderTotalPrice += item.getPrice();
+         }//for
+      }//if
+   }
 
-      //prompt for amount received
-      amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
+   protected double payOrder(double payment){
+      double change;
+      change = -1* ( orderTotalPrice - payment);
+      orderTotalPrice -= payment;
 
-      //calculate change
-      changeDue = amountTendered - orderTotalPrice;
-
-      //output statements
-      System.out.println("Payment for order: " + orderName );
-      System.out.println("Amount Due: \t\t\t£" + df.format(orderTotalPrice) );
-      System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-      System.out.println("Change Due:\t\t\t\t£" + df.format(changeDue));
-   }//Take Payment
+      if (orderTotalPrice <= 0){
+         System.out.println("Bill Payed of. Change is £" + df.format(change));
+         return change;
+      }
+      else{
+         System.out.println("Thank you for payment. £" +
+               df.format(orderTotalPrice) + " still to be paid.");
+         return 0;
+      }
+   }//Pay Order
 
    // Accessors & Mutators
    public boolean isOrderComplete() {
