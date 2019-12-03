@@ -8,10 +8,10 @@ Class for safely handling user input
 import java.util.Scanner;
 
 public class UserInput {
+   private static Scanner keyboard = new Scanner(System.in);
 
    // Method to get user input and protect from incorrect entries.
    protected static int getIntInput(){
-      Scanner keyboard = new Scanner(System.in);
       int inputvalue;
       try{
          inputvalue = keyboard.nextInt();
@@ -24,7 +24,6 @@ public class UserInput {
    }//GetUserInput
 
    protected static int getIntInput(String message){
-      Scanner keyboard = new Scanner(System.in);
       int inputvalue;
       try{
          System.out.print(message);
@@ -39,7 +38,6 @@ public class UserInput {
 
    // Method for getting an double input
    protected static double getDoubleInput(){
-      Scanner keyboard = new Scanner(System.in);
       double inputValue;
       try{
          inputValue = keyboard.nextDouble();
@@ -53,7 +51,6 @@ public class UserInput {
 
    }//GetDoubleInput// Method for getting an double input
    protected static double getDoubleInput(String message){
-      Scanner keyboard = new Scanner(System.in);
       double inputValue;
       try{
          System.out.print(message);
@@ -69,7 +66,6 @@ public class UserInput {
 
    // Method for getting a character input
    protected static char getCharInput(){
-      Scanner keyboard = new Scanner(System.in);
       String inputValue;
       char returnValue;
       try{
@@ -94,7 +90,6 @@ public class UserInput {
 
    // Method for getting a character input
    protected static char getCharInput(String message){
-      Scanner keyboard = new Scanner(System.in);
       String inputValue;
       char returnValue;
       try{
@@ -119,7 +114,6 @@ public class UserInput {
    }//GetCharInput
 
    protected static String getString(String message){
-      Scanner keyboard = new Scanner(System.in);
       System.out.print(message);
       return keyboard.nextLine();
    }
