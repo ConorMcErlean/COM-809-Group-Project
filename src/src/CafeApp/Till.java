@@ -12,86 +12,28 @@ import java.util.Scanner;
 
 public class Till extends Staff {
     // Static Variables
-    private static DecimalFormat df = new DecimalFormat("0.00");
-    private static double total;
     private static boolean next = true;
-    private static int numAtTable;
-    private static int tableNumber;
 
     // Order Arrays
-    static private ArrayList<Item> order = new ArrayList<Item>();
+    static private ArrayList<Order> orders = new
+          ArrayList<Order>();
 
     //defaultConstructor
     protected Till(int loginCode) {
         super(loginCode);
     }//defaultConstructor
 
-    // method for getting table number/ amount of people at table:
-    protected static void tableInfo() {
-        int tableNumber = UserInput.getIntInput("\nEnter Table Number: ");
-        Till.setTableNumber(tableNumber);
-        int noOfPeople = UserInput.getIntInput("Number of people at table: ");
-        Till.setNumAtTable(noOfPeople);
-    }//takeOrder
-
-    //set Methods for table number/ amount of people at table
-    protected static void setTableNumber(int tableNo) {
-        tableNumber = tableNo;
-    }//setTableNumber
-
-    protected static void setNumAtTable(int peopleAtTable) {
-        numAtTable = peopleAtTable;
-    }//setNumAtTable
-
-    //methods to get table number and number of people at the table:
-    protected static int getTableNumber() {
-        return tableNumber;
-    }//geTableNumber
-    protected static int getNumAtTable() {
-        return numAtTable;
-    }//geNumAtTable
-
     //method to take table order
     protected static void tableOrder(){
-        tableInfo() ;
-        startOrder();
+        System.out.println("Creating a new order:");
+        Order order = new Order();
+        addToOrder(order);
+        viewOrder(order);
+        orders.add(order);
     }//tableOrder
 
-    //method to view current order
-    protected static void viewCurrentOrder() { viewOrder();
-    }//viewCurrentOrder
-
-    //method to remove item from order
-    protected static void removeOrderItem(){
-        removeFromOrder();
-    }//removeOrderItem
-
-    //method to print the total cost - bill for the table
-    protected static void printBill() {
-        //variables
-        int number = 1;
-        //for loop to get the name and price of each item in the view order list
-        System.out.println("\nThe bill for table " + getTableNumber() +
-              " is: ");
-        for (Item item: order) {
-            System.out.println(item.getName() + "\t\t£:" +
-                  df.format(item.getPrice()));
-            //keep a running total of bill
-            total = total + item.getPrice();
-            number++;
-        }//for
-        //total cost of bill
-        System.out.println("The total bill is: £ " + df.format(total));
-    }//printBill
-
-    //method to start to take order
-    protected static void startOrder() {
-        addToOrder();
-        viewOrder();
-    }//startOrder
-
     //method to add to an order
-    protected static void addToOrder() {
+    protected static void addToOrder(Order order) {
         char response = 'y';
         System.out.print("\nAdd to Order: \n");
         while (response == 'y') {
@@ -101,52 +43,81 @@ public class Till extends Staff {
         }//while
     }//addToOrder
 
-    protected static double getBillTotal(){
-        return total;
+    //method to view order
+    protected static void viewOrder(Order order){
+        order.viewOrder();
+    }//viewOrder
+
+    // Method to view all orders
+    protected static void viewAllOrders() {
+        int counter = 1;
+        for (Order order: orders){
+            System.out.println(counter +". "+ order.getOrderName());
+            counter++;
+        }
+    }//viewAllOrders
+
+    //Method to select an order
+    protected static Order getOrder(){
+        viewAllOrders();
+        int selection = UserInput.getIntInput("Choose an order:");
+        selection--;
+        return orders.get(selection);
     }
+
+    // Method to add to existing orders
+    protected static void addToExisting(){
+        System.out.println("Please select which order you wish to edit:");
+        Order adding = getOrder();
+        addToOrder(adding);
+    }
+
+    // Method to view current orders
+    protected static void viewCurrentOrders(){
+        System.out.println("Please select the order you would like to view:");
+        Order viewing = getOrder();
+        viewOrder(viewing);
+    }
+
+    //method to remove item from order
+    protected static void removeOrderItem(){
+        System.out.println("Please select which order you wish to edit:");
+        Order order = getOrder();
+        order.removeFromOrder();
+    }//removeOrderItem
+
+    //method to print the total cost - bill for the table
+    protected static void printBill() {
+        System.out.println("Please select which order you wish to print a" +
+              " bill for:");
+        Order toPrint = getOrder();
+        toPrint.printBill();
+    }//printBill
+
     protected static void takePayment() {
+        System.out.println("Please select which bill is being paid:");
+        Order toPay = getOrder();
+
         //variables
-        double  amountTendered, changeDue, billTotal = getBillTotal();
+        DecimalFormat df = new DecimalFormat("0.00");
+        double  amountTendered, changeDue, billTotal = toPay.getBillTotal();
         //provide amount due:
-        System.out.println("\nThe Total Bill for table " + getTableNumber() +
-              " is: £" + df.format(billTotal) );
+        System.out.println("\nThe Total Bill for order " + toPay.getOrderName()
+              + " is: £" + df.format(billTotal) );
 
         //prompt for amount received
         amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
 
         //calculate change
-        changeDue = amountTendered - billTotal;
+        changeDue = toPay.payOrder(amountTendered);
 
         //output statements
-        System.out.println("Payment for table " + getTableNumber());
+        System.out.println("Payment for order " + toPay.getOrderName());
         System.out.println("Amount Due: \t\t\t£" + df.format(billTotal) );
         System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
         System.out.println("Change Due:\t\t\t\t£" + df.format(changeDue));
     }
 
-    //method to view order
-    protected static void viewOrder(){
-        int number = 1;
-        System.out.println("\nThe current order is: ");
-        for (Item item: order) {
-            System.out.println(number + item.getName());
-            number++;
-        }//for
-    }//viewOrder
-
-    //method to remove from order
-    protected static void removeFromOrder (){
-        try{
-            int choice;
-            viewOrder();
-            choice = UserInput.getIntInput("Remove number: ");
-            order.remove(choice);
-            System.out.print( "Item has been removed\n");
-        }//try
-        catch (Exception issue){
-            System.out.println("No such item exists.");
-        }//Catch
-    }//removeFromOrder
 }//class
 
 

@@ -103,11 +103,11 @@ public class Menu {
                break;
             case 2:
                //method to add to order
-               Till.addToOrder();
+               Till.addToExisting();
                break;
             case 3:
                //method to view order
-               Till.viewCurrentOrder();
+               Till.viewCurrentOrders();
                break;
             case 4:
                //method to remove from order
@@ -120,6 +120,7 @@ public class Menu {
             case 6:
                //method to print bill to be added
                System.out.print("You have opted to print a bill");
+               Till.printBill();
                break;
             case 7:
                // Method to take Payment
@@ -158,7 +159,7 @@ public class Menu {
          // Kitchen Class to complete the function.
          switch (choice){
             case 1:
-               Till.viewCurrentOrder();
+               Till.viewCurrentOrders();
                break;
             case 2:
                System.out.println("Out of stock items:");
@@ -208,7 +209,7 @@ public class Menu {
                Management.removeItem();
                break;
             case 3:
-               Till.viewOrder();
+               Till.viewCurrentOrders();
                break;
             case 4:
 //                    Management.applyDiscount();
