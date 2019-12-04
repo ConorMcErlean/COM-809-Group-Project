@@ -150,8 +150,10 @@ public class Till extends Staff {
         System.out.println("Change Due:\t\t\t\t£" + df.format((change))+ "\n");
         System.out.println("**Thank you for your custom**\n");
 
+        toPay.setOrderComplete(true);
+    }//printReceipt
 
-    }
+
 
 }//class
 
