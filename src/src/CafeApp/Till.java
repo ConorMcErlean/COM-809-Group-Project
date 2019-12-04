@@ -1,6 +1,6 @@
 package CafeApp;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,6 +11,10 @@ import java.util.Scanner;
  */
 
 public class Till extends Staff {
+
+    //static decimal format
+    static DecimalFormat df = new DecimalFormat("0.00");
+
     // Static Variables
     private static boolean next = true;
 
@@ -25,7 +29,7 @@ public class Till extends Staff {
 
     //method to take table order
     protected static void tableOrder(){
-        System.out.println("Creating a new order:");
+        System.out.println("\nCreate a new order:");
         Order order = new Order();
         addToOrder(order);
         viewOrder(order);
@@ -67,55 +71,86 @@ public class Till extends Staff {
 
     // Method to add to existing orders
     protected static void addToExisting(){
-        System.out.println("Please select which order you wish to edit:");
+        System.out.println("\nSelect which order you wish to edit:");
         Order adding = getOrder();
         addToOrder(adding);
     }
 
     // Method to view current orders
     protected static void viewCurrentOrders(){
-        System.out.println("Please select the order you would like to view:");
+        System.out.println("\nSelect the order you wish to view:");
         Order viewing = getOrder();
         viewOrder(viewing);
     }
 
     //method to remove item from order
     protected static void removeOrderItem(){
-        System.out.println("Please select which order you wish to edit:");
+        System.out.println("\nSelect an order to edit:");
         Order order = getOrder();
         order.removeFromOrder();
     }//removeOrderItem
 
     //method to print the total cost - bill for the table
     protected static void printBill() {
-        System.out.println("Please select which order you wish to print a" +
+        System.out.println("\nSelect an order to print the" +
               " bill for:");
         Order toPrint = getOrder();
         toPrint.printBill();
     }//printBill
 
     protected static void takePayment() {
-        System.out.println("Please select which bill is being paid:");
+        System.out.println("\nSelect which bill is being paid:");
         Order toPay = getOrder();
 
         //variables
-        DecimalFormat df = new DecimalFormat("0.00");
-        double  amountTendered, changeDue, billTotal = toPay.getBillTotal();
+        char response;
+        double  amountTendered, payment, change, billTotal = toPay.getBillTotal();
         //provide amount due:
-        System.out.println("\nThe Total Bill for order " + toPay.getOrderName()
+        System.out.println("\nThe Total Bill for " + toPay.getOrderName()
               + " is: £" + df.format(billTotal) );
 
         //prompt for amount received
         amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
 
         //calculate change
-        changeDue = toPay.payOrder(amountTendered);
+        change= amountTendered - billTotal;
 
+        //if statements in case bill is split
+        if (amountTendered >= billTotal){
         //output statements
-        System.out.println("Payment for order " + toPay.getOrderName());
-        System.out.println("Amount Due: \t\t\t£" + df.format(billTotal) );
+            System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal) );
+            System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
+            System.out.println("Change Due:\t\t\t\t£" + df.format((change))+ "\n");
+        }//if
+        else{
+            payment = toPay.payOrder(amountTendered);
+        }//else
+
+        if (amountTendered >= billTotal) {
+            response = UserInput.getCharInput("\nPrint a receipt (y or n)?: ");
+            if (response == 'y') {
+                printReceipt(billTotal, amountTendered, change);
+            }//if
+        }//if
+    }//takePayment
+
+
+
+    protected static void  printReceipt( double billTotal, double amountTendered, double change) {
+        System.out.println("Print a receipt for table: ");
+        Order toPay = getOrder();
+
+        System.out.println("\n");
+        System.out.println("\t\t\tCafe App");
+        System.out.println("\t\tCustomer Receipt");
+        System.out.println("\t\t" + toPay.getOrderName());
+        toPay.PrintAnOrder();
+        System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal) );
         System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-        System.out.println("Change Due:\t\t\t\t£" + df.format(changeDue));
+        System.out.println("Change Due:\t\t\t\t£" + df.format((change))+ "\n");
+        System.out.println("**Thank you for your custom**\n");
+
+
     }
 
 }//class

@@ -75,7 +75,7 @@ public class Order {
       }//for
       calculateTotal();
       //total cost of bill
-      System.out.println("The total bill is: £ " + df.format(orderTotalPrice));
+      System.out.println("The total bill is: £" + df.format(orderTotalPrice));
    }//printBill
 
    protected double getBillTotal(){
@@ -100,12 +100,10 @@ public class Order {
       orderTotalPrice -= payment;
 
       if (orderTotalPrice <= 0){
-         System.out.println("Bill Payed of. Change is £" + df.format(change));
          return change;
       }
       else{
-         System.out.println("Thank you for payment. £" +
-               df.format(orderTotalPrice) + " still to be paid.");
+         System.out.println("\n" + df.format(orderTotalPrice) + " still to be paid.");
          return 0;
       }
    }//Pay Order
@@ -134,4 +132,13 @@ public class Order {
    public double getOrderTotalPrice() {
       return orderTotalPrice;
    }
+
+   protected void PrintAnOrder(){
+      int number = 1;
+      System.out.println("\nThe order was: ");
+      for (Item item: order) {
+         System.out.println(item.getName() + "\t\t\t\t" + "£" + df.format(item.getPrice()));
+         number++;
+      }//for
+   }//viewOrder
 }//class

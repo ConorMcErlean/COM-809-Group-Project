@@ -18,9 +18,9 @@ public class StockList {
          2.00);
    private static Item capucchino = new Item("Cappuccino",
          3.00);
-   private static Item latte = new Item("Latte",
+   private static Item latte = new Item("Latte     ",
          3.00);
-   private static Item tea = new Item ("Tea",
+   private static Item tea = new Item ("Tea       ",
          1.00);
    private static Item friedegg = new Item("Fried Eggs",
          3.50);

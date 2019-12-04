@@ -83,7 +83,7 @@ public class Menu {
       //do..while to keep the menu looping
       do {
          //switch statement to offer the till staff options of what to do
-         System.out.println("\nTill Operator\nEnter a menu choice: ");
+         System.out.println("\nTill Operator\nSelect an option: ");
          System.out.println("1. \t Take Order");
          System.out.println("2. \t Add to Order");
          System.out.println("3. \t View Order");
@@ -99,41 +99,40 @@ public class Menu {
          switch (choice) {
             case 1:
                //methods to take order
-               Till.tableOrder();
+                Till.tableOrder();
                break;
             case 2:
                //method to add to order
-               Till.addToExisting();
+                Till.addToExisting();
                break;
             case 3:
                //method to view order
-               Till.viewCurrentOrders();
+                Till.viewCurrentOrders();
                break;
             case 4:
                //method to remove from order
-               Till.removeOrderItem();
+                Till.removeOrderItem();
                break;
             case 5:
                //method to view out of stock
-               StockList.viewOutOfStock();
+                System.out.println("\nView out of stock");
+                StockList.viewOutOfStock();
                break;
             case 6:
                //method to print bill to be added
-               System.out.print("You have opted to print a bill");
-               Till.printBill();
+                Till.printBill();
                break;
             case 7:
                // Method to take Payment
-               System.out.println("Paying bill:");
-               Till.takePayment();
+                Till.takePayment();
             case 8:
                //method to return to start
-               System.out.print("You have opted to return to log in page");
-               logout = true;
-               break;
+                System.out.print("\nReturn to log in page");
+                logout = true;
+                break;
             default:
-               System.out.println("Option not recognised, please try again");
-               break;
+                System.out.println("\nOption not recognised, please try again");
+                break;
          }//switch
       } while (!logout);
    }//Till Menu
