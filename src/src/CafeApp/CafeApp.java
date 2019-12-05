@@ -9,7 +9,7 @@ The following code uses the Ulster University Code Conventions.
 Created as part of COM809: Professional Software Development.
 The following work is a group project, written, edited and tested in equal parts
 by: Conor McErlean, Jennifer Coggan & Matthew McCafferty.
-Created between: 18/11/2019 & 16.12.2019.
+Created between: 18/11/2019 & 16/12/2019.
 
 Begin the program here.
 

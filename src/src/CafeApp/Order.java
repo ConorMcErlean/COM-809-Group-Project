@@ -70,7 +70,7 @@ public class Order {
       System.out.println("\nThe bill for order " + orderName +
             " is: ");
       for (Item item: order) {
-         System.out.println(item.getName() + "\t\t£:" +
+         System.out.println(item.getName() + "\t\t\t£:" +
                df.format(item.getPrice()));
       }//for
       calculateTotal();

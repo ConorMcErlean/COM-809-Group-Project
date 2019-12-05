@@ -1,6 +1,7 @@
 package CafeApp;
 
 
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +21,7 @@ public class Till extends Staff {
 
     // Order Arrays
     static private ArrayList<Order> orders = new
-          ArrayList<Order>();
+            ArrayList<Order>();
 
     //defaultConstructor
     protected Till(int loginCode) {
@@ -28,7 +29,7 @@ public class Till extends Staff {
     }//defaultConstructor
 
     //method to take table order
-    protected static void tableOrder(){
+    protected static void tableOrder() {
         System.out.println("\nCreate a new order:");
         Order order = new Order();
         addToOrder(order);
@@ -42,27 +43,27 @@ public class Till extends Staff {
         System.out.print("\nAdd to Order: \n");
         while (response == 'y') {
             order.add(StockList.selectItem());
-            response= UserInput.getCharInput("Add another item (y or n)?: ");
+            response = UserInput.getCharInput("Add another item (y or n)?: ");
             System.out.print("\n");
         }//while
     }//addToOrder
 
     //method to view order
-    protected static void viewOrder(Order order){
+    protected static void viewOrder(Order order) {
         order.viewOrder();
     }//viewOrder
 
     // Method to view all orders
     protected static void viewAllOrders() {
         int counter = 1;
-        for (Order order: orders){
-            System.out.println(counter +". "+ order.getOrderName());
+        for (Order order : orders) {
+            System.out.println(counter + ". " + order.getOrderName());
             counter++;
         }
     }//viewAllOrders
 
     //Method to select an order
-    protected static Order getOrder(){
+    protected static Order getOrder() {
         viewAllOrders();
         int selection = UserInput.getIntInput("Choose an order:");
         selection--;
@@ -70,21 +71,21 @@ public class Till extends Staff {
     }
 
     // Method to add to existing orders
-    protected static void addToExisting(){
+    protected static void addToExisting() {
         System.out.println("\nSelect which order you wish to edit:");
         Order adding = getOrder();
         addToOrder(adding);
     }
 
     // Method to view current orders
-    protected static void viewCurrentOrders(){
+    protected static void viewCurrentOrders() {
         System.out.println("\nSelect the order you wish to view:");
         Order viewing = getOrder();
         viewOrder(viewing);
     }
 
     //method to remove item from order
-    protected static void removeOrderItem(){
+    protected static void removeOrderItem() {
         System.out.println("\nSelect an order to edit:");
         Order order = getOrder();
         order.removeFromOrder();
@@ -93,7 +94,7 @@ public class Till extends Staff {
     //method to print the total cost - bill for the table
     protected static void printBill() {
         System.out.println("\nSelect an order to print the" +
-              " bill for:");
+                " bill for:");
         Order toPrint = getOrder();
         toPrint.printBill();
     }//printBill
@@ -104,25 +105,25 @@ public class Till extends Staff {
 
         //variables
         char response;
-        double  amountTendered, payment, change, billTotal = toPay.getBillTotal();
+        double amountTendered, payment, change, billTotal = toPay.getBillTotal();
         //provide amount due:
         System.out.println("\nThe Total Bill for " + toPay.getOrderName()
-              + " is: £" + df.format(billTotal) );
+                + " is: £" + df.format(billTotal));
 
         //prompt for amount received
         amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
 
         //calculate change
-        change= amountTendered - billTotal;
+        change = amountTendered - billTotal;
 
         //if statements in case bill is split
-        if (amountTendered >= billTotal){
-        //output statements
-            System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal) );
+        if (amountTendered >= billTotal) {
+            //output statements
+            System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal));
             System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-            System.out.println("Change Due:\t\t\t\t£" + df.format((change))+ "\n");
+            System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
         }//if
-        else{
+        else {
             payment = toPay.payOrder(amountTendered);
         }//else
 
@@ -134,9 +135,8 @@ public class Till extends Staff {
         }//if
     }//takePayment
 
-
-
-    protected static void  printReceipt( double billTotal, double amountTendered, double change) {
+    //method to print receipt
+    protected static void printReceipt(double billTotal, double amountTendered, double change) {
         System.out.println("Print a receipt for table: ");
         Order toPay = getOrder();
 
@@ -145,16 +145,13 @@ public class Till extends Staff {
         System.out.println("\t\tCustomer Receipt");
         System.out.println("\t\t" + toPay.getOrderName());
         toPay.PrintAnOrder();
-        System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal) );
+        System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal));
         System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-        System.out.println("Change Due:\t\t\t\t£" + df.format((change))+ "\n");
+        System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
         System.out.println("**Thank you for your custom**\n");
 
         toPay.setOrderComplete(true);
     }//printReceipt
 
-
-
 }//class
-
 

@@ -113,4 +113,23 @@ public class StockList {
    protected static ArrayList getMenu(){
       return menu;
    }//getMenu
+
+   //jen test to get mark out of stock working
+   protected static void seeOOS(){
+      int counter = 1;
+      for (Item item: outOfStock){
+         System.out.println(counter + ". " + item.getName());
+         counter++;
+      }//for
+   }// See Options
+
+   //jen test to get mark out of stock working
+   protected static Item selectStock() {
+      int choice;
+      seeOOS();
+      choice = UserInput.getIntInput("Enter the item number: ");
+      choice--;
+      return outOfStock.get(choice);
+   }
+
 }//class

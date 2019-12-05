@@ -17,7 +17,7 @@ public class Management extends Staff {
       ArrayList<Item> menu = StockList.getMenu();
       for (Item newItem : menu) {
          name = UserInput.getString("Enter Item Name: ");
-         price = UserInput.getDoubleInput("Enter price: £ ");
+         price = UserInput.getDoubleInput("Enter price: £");
          newItem.setName(name);
          newItem.setPrice(price);
          menu.add(newItem);

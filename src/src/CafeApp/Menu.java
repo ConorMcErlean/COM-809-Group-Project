@@ -125,6 +125,7 @@ public class Menu {
             case 7:
                // Method to take Payment
                 Till.takePayment();
+                break;
             case 8:
                //method to return to start
                 System.out.print("\nReturn to log in page");

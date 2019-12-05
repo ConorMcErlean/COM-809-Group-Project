@@ -115,7 +115,7 @@ public class UserInput {
 
    protected static String getString(String message){
       System.out.print(message);
-      return keyboard.nextLine();
+      return keyboard.next();
    }
 
 }//class
