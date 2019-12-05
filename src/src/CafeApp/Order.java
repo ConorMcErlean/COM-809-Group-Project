@@ -48,7 +48,8 @@ public class Order {
       try{
          int choice;
          viewOrder();
-         choice = UserInput.getIntInput("Remove number: ");
+         choice = UserInput.getArrayInput("Remove number: ", order);
+         choice--;
          order.remove(choice);
          System.out.print( "Item has been removed\n");
       }//try

@@ -15,28 +15,33 @@ public class UserInput {
 
    // Method to get user input and protect from incorrect entries.
    protected static int getIntInput(){
-      int inputvalue;
-      try{
-         inputvalue = keyboard.nextInt();
-         return inputvalue;
-      }//Try
-      catch (Exception issue){
-         inputvalue = 99;
-         return inputvalue;
-      }
+      int inputValue = 0;
+      boolean invalidResponse = true;
+      do {
+         try {
+            inputValue = keyboard.nextInt();
+            invalidResponse = false;
+         }//Try
+         catch (Exception issue) {
+            System.out.println("Try again:");
+         }
+      }while (invalidResponse);
+      return inputValue;
    }//GetUserInput
 
    protected static int getIntInput(String message){
-      int inputvalue;
-      try{
-         System.out.print(message);
-         inputvalue = keyboard.nextInt();
-         return inputvalue;
-      }//Try
-      catch (Exception issue){
-         inputvalue = 99;
-         return inputvalue;
-      }
+      int inputvalue = 0;
+      boolean invalidResponse = true;
+      do {
+         try {
+            System.out.print(message);
+            inputvalue = keyboard.nextInt();
+         }//Try
+         catch (Exception issue) {
+            System.out.println("Invalid entry, Try again:");
+         }
+      }while (invalidResponse);
+      return inputvalue;
    }//GetUserInput
 
    // Method for getting an double input
