@@ -2,6 +2,8 @@ package CafeApp;
 
 
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +20,7 @@ public class Till extends Staff {
 
     // Static Variables
     private static boolean next = true;
-
+    static PrintWriter exportedFile;
     // Order Arrays
     static private ArrayList<Order> orders = new
             ArrayList<Order>();
@@ -131,6 +133,7 @@ public class Till extends Staff {
             response = UserInput.getCharInput("\nPrint a receipt (y or n)?: ");
             if (response == 'y') {
                 printReceipt(billTotal, amountTendered, change);
+                exportReceipt(billTotal, amountTendered, change);
             }//if
         }//if
     }//takePayment
@@ -144,7 +147,7 @@ public class Till extends Staff {
         System.out.println("\t\t\tCafe App");
         System.out.println("\t\tCustomer Receipt");
         System.out.println("\t\t" + toPay.getOrderName());
-        toPay.PrintAnOrder();
+        toPay.printAnOrder();
         System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal));
         System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
         System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
@@ -152,6 +155,55 @@ public class Till extends Staff {
 
         toPay.setOrderComplete(true);
     }//printReceipt
+
+    //method to print receipt
+    protected static String toString (double billTotal, double amountTendered, double change) {
+        String message, message1, message2;
+        System.out.println("Print a receipt for table: ");
+        Order toPay = getOrder();
+        String name = toPay.getOrderName();
+        message1 = "\n" +
+        "\n\t\t\tCafe App" +
+        "\n\t\tCustomer Receipt" +
+        "\n\t\t" + name + "\n";
+        toPay.toString();
+        message2 = "\nAmount Due: \t\t\t£" + df.format(billTotal) +
+        "\nAmount Tendered:\t\t£" + df.format(amountTendered) +
+        "\nChange Due:\t\t\t\t£" + df.format((change)) + "\n" +
+        "\n**Thank you for your custom**\n";
+
+        message = message1 + toPay.toString() + message2;
+        return message ;
+    }//printReceipt2
+
+    //method to print receipt to file
+    protected static void exportReceipt(double billTotal, double amountTendered, double change) {
+        //variables
+        boolean open;
+        String myFileName = "receipt.txt";
+        //try..catch to catch any errors
+        try {
+            exportedFile = new PrintWriter(myFileName);
+            open = true;
+        }//try
+        catch (FileNotFoundException error) {
+            System.out.println("Error opening the file");
+            open = false;
+        }//catch
+        //try.. catch to catch any errors while printing to and exporting file
+        try {
+            if (open) {
+                exportedFile.println(toString(billTotal, amountTendered, change));
+                exportedFile.println();
+                exportedFile.close();
+                open = false;
+                System.out.println("Successfully written to file and closed");
+            }//if
+        }//try
+        catch (Exception error) {
+            System.out.println("Exception " + error.getMessage() + " caught");
+        }//catch
+    }//exportReceipt
 
 }//class
 

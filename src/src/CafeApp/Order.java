@@ -134,7 +134,8 @@ public class Order {
       return orderTotalPrice;
    }
 
-   protected void PrintAnOrder(){
+   //method to Print an order
+   protected void printAnOrder(){
       int number = 1;
       System.out.println("\nThe order was: ");
       for (Item item: order) {
@@ -142,4 +143,5 @@ public class Order {
          number++;
       }//for
    }//viewOrder
+
 }//class
