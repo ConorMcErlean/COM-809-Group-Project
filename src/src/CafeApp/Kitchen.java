@@ -30,11 +30,15 @@ class Kitchen extends Staff {
    // Method to mark an item back in stock. using the selectItem() Method, the
    // setInStock() Method & the removeFromOutOfStock() Method.
    protected static void markBackInStock(){
-      //changed from selectItem to select stock method
-      Item item = StockList.selectStock();
-      item.setInStock(true);
-      StockList.removeFromOutOfStock(item);
-      System.out.println("The item " + item.getName() + " has been marked" +
-            " back in stock");
+      // Line below prevents eternal loops
+      if (StockList.getOutOfStockSize() > 0) {
+         Item item = StockList.selectOutOfStock();
+         StockList.removeFromOutOfStock(item);
+         System.out.println("The item " + item.getName() + " has been marked" +
+                 " back in stock");
+      }//if
+      else{
+         System.out.println("There is currently nothing out of stock.");
+      }
    }
 }//class

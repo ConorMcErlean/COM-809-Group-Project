@@ -79,7 +79,7 @@ public class StockList {
       // Variables and objects required
       int choice;
          seeOptions();
-         choice = UserInput.getIntInput("Enter the item number: ");
+         choice = UserInput.getArrayInput("Enter the item number: ", menu);
          choice--;
          return menu.get(choice);
    }// Select Item
@@ -90,7 +90,7 @@ public class StockList {
       // Variables and objects required
       int choice;
       viewOutOfStock();
-      choice = UserInput.getIntInput("Enter the item number: ");
+      choice = UserInput.getArrayInput("Enter the item number: ", outOfStock);
       choice--;
       return outOfStock.get(choice);
    }// Select out of stock.
@@ -130,6 +130,9 @@ public class StockList {
       choice = UserInput.getIntInput("Enter the item number: ");
       choice--;
       return outOfStock.get(choice);
+   }
+   protected static int getOutOfStockSize(){
+      return outOfStock.size();
    }
 
 }//class

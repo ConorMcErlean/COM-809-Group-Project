@@ -1,11 +1,14 @@
-package CafeApp;/*
+package CafeApp;
+/*
 Created by: Conor McErlean
 Created on: 03/12/2019
 
 Class for safely handling user input
 */
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class UserInput {
    private static Scanner keyboard = new Scanner(System.in);
@@ -87,6 +90,27 @@ public class UserInput {
          return returnValue;
       }
    }//GetCharInput
+
+   // Method to get an array position safely
+   protected static int getArrayInput(String message, ArrayList<Item> array) {
+      boolean invalidResponse = true;
+      int input = 0;
+      System.out.println(message);
+      do {
+         try {
+            input = keyboard.nextInt();
+            if (input - 1 < array.size()) {
+               invalidResponse = false;
+            } else {
+               System.out.println("Not an option, Try again:");
+            }
+         } catch (Exception issue) {
+            String hold = keyboard.next();
+            System.out.println("Not an option, Try again:");
+         }
+      } while (invalidResponse);
+      return input;
+   }//GetArrayInput
 
    // Method for getting a character input
    protected static char getCharInput(String message){
