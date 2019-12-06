@@ -35,6 +35,7 @@ public class UserInput {
       do {
          try {
             System.out.print(message);
+            invalidResponse = false;
             inputValue = keyboard.nextInt();
          }//Try
          catch (Exception issue) {
