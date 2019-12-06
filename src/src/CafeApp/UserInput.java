@@ -133,7 +133,8 @@ public class UserInput {
 
    protected static String getString(String message){
       System.out.print(message);
-      return keyboard.next();
+      keyboard.next();
+      return keyboard.nextLine();
    }
 
 }//class

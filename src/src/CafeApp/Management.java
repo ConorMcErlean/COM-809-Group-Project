@@ -15,12 +15,21 @@ public class Management extends Staff {
       String name;
       double price;
       ArrayList<Item> menu = StockList.getMenu();
-      for (Item newItem : menu) {
-         name = UserInput.getString("Enter Item Name: ");
-         price = UserInput.getDoubleInput("Enter price: £");
-         newItem.setName(name);
-         newItem.setPrice(price);
-         menu.add(newItem);
+
+      //Creating an instance of Item
+      Item newItem = new Item();
+
+      name = UserInput.getString("Enter Item Name: ");     //every time i used this the add item would crash
+      newItem.setName(name);
+      price = UserInput.getDoubleInput("Enter price: £ ");
+      newItem.setPrice(price);
+
+      //Adding the item object                                 //this shows that the item has been added to the list of
+      menu.add(newItem);                                       //current items
+
+      //Printing each item to check if new item has been added
+      for (Item item : menu) {
+         System.out.println(item);
       }
    }//addItem()
 

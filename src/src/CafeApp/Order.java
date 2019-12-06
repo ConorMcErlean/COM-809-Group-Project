@@ -130,6 +130,11 @@ public class Order {
       return orderName;
    }
 
+   //setter to try to apply discount. This works now!! added by Matthew
+   public void setOrderTotalPrice(double orderTotalPrice) {
+      this.orderTotalPrice = orderTotalPrice;
+   }
+
    public double getOrderTotalPrice() {
       return orderTotalPrice;
    }
