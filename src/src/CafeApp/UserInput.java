@@ -30,70 +30,59 @@ public class UserInput {
    }//GetUserInput
 
    protected static int getIntInput(String message){
-      int inputvalue = 0;
+      int inputValue = 0;
       boolean invalidResponse = true;
       do {
          try {
             System.out.print(message);
-            inputvalue = keyboard.nextInt();
+            inputValue = keyboard.nextInt();
          }//Try
          catch (Exception issue) {
             System.out.println("Invalid entry, Try again:");
          }
       }while (invalidResponse);
-      return inputvalue;
+      return inputValue;
    }//GetUserInput
 
-   // Method for getting an double input
-   protected static double getDoubleInput(){
-      double inputValue;
-      try{
-         inputValue = keyboard.nextDouble();
-         return inputValue;
-      }//Try
-      catch (Exception issue){
-         System.out.println("Incorrect value entered, defaulting to £0.00");
-         inputValue = 0.00;
-         return inputValue;
-      }
-
-   }//GetDoubleInput// Method for getting an double input
+   //GetDoubleInput// Method for getting an double input
    protected static double getDoubleInput(String message){
-      double inputValue;
-      try{
-         System.out.print(message);
-         inputValue = keyboard.nextDouble();
-         return inputValue;
-      }//Try
-      catch (Exception issue){
-         System.out.println("Incorrect value entered, defaulting to £0.00");
-         inputValue = 0.00;
-         return inputValue;
-      }
+      double inputValue = 0;
+      boolean invalidResponse = true;
+      do {
+         try {
+            System.out.print(message);
+            inputValue = keyboard.nextDouble();
+            invalidResponse = false;
+         }//Try
+         catch (Exception issue) {
+            System.out.println("Incorrect value entered, try again:");
+         }
+      }while(invalidResponse);
+      return inputValue;
    }//GetDoubleInput
 
    // Method for getting a character input
    protected static char getCharInput(){
       String inputValue;
-      char returnValue;
-      try{
-         inputValue = keyboard.next();
-         returnValue = inputValue.toLowerCase().charAt(0);
+      char returnValue = 'x';
+      boolean invalidResponse = true;
+      do {
+         try {
+            inputValue = keyboard.next();
+            returnValue = inputValue.toLowerCase().charAt(0);
 
-         if (returnValue == 'n' || returnValue == 'y') {
-            return returnValue;
+            if (returnValue == 'n' || returnValue == 'y') {
+               invalidResponse = false;
+            }
+            else {
+               System.out.println("Incorrect value entered, try again:");
+            }
+         }//Try
+         catch (Exception issue) {
+            System.out.println("Incorrect value entered, try again:");
          }
-         else{
-            System.out.println("Incorrect value entered, defaulting to " +
-                  "No.");
-            return 'n';
-         }
-      }//Try
-      catch (Exception issue){
-         System.out.println("Incorrect value entered, defaulting to No.");
-         returnValue = 'n';
-         return returnValue;
-      }
+      }while (invalidResponse);
+      return returnValue;
    }//GetCharInput
 
    // Method to get an array position safely
@@ -120,26 +109,25 @@ public class UserInput {
    // Method for getting a character input
    protected static char getCharInput(String message){
       String inputValue;
-      char returnValue;
-      try{
-         System.out.print(message);
-         inputValue = keyboard.next();
-         returnValue = inputValue.toLowerCase().charAt(0);
+      boolean invalidResponse = true;
+      char returnValue = 'x';
+      do {
+         try {
+            System.out.print(message);
+            inputValue = keyboard.next();
+            returnValue = inputValue.toLowerCase().charAt(0);
 
-         if (returnValue == 'n' || returnValue == 'y') {
-            return returnValue;
+            if (returnValue == 'n' || returnValue == 'y') {
+               invalidResponse = false;
+            } else {
+               System.out.println("Incorrect value entered, try again:");
+            }
+         }//Try
+         catch (Exception issue) {
+            System.out.println("Incorrect value entered, try again:");
          }
-         else{
-            System.out.println("Incorrect value entered, defaulting to " +
-                  "No.");
-            return 'n';
-         }
-      }//Try
-      catch (Exception issue){
-         System.out.println("Incorrect value entered, defaulting to No.");
-         returnValue = 'n';
-         return returnValue;
-      }
+      }while (invalidResponse);
+      return returnValue;
    }//GetCharInput
 
    protected static String getString(String message){
