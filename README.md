@@ -13,3 +13,11 @@ Files in this repository may have been edited or added by any of the members of 
 
 The purpose of this repository is to build a command line program to act as a ordering system in a cafe or restaurant.
 The program should accept orders fom a till operator, pass those orders to the kitchen operators, and allow management to control or adjust pricing.
+
+
+
+Known Bugs
+
+If i directly go to apply a discount before printing the bill as the till operator then the manager discount does not apply.
+if the bill is first printed in the till log in then logged out and into the manager log in then the discount applies but does not show the discount just the discounted price.
+when added new items to addItem in manager it only adds the first name.
