@@ -5,6 +5,8 @@ Created on: 03/12/2019
 Class to create order objects to allow for multiple orders.
 */
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -13,9 +15,10 @@ public class Order {
    private boolean orderComplete;
    private boolean orderCooked;
    private String orderName;
-   private double orderTotalPrice;
+   private double orderTotalPrice, remainingTotal, payment, change;
    private static int posOrders = 1;
    private static DecimalFormat df = new DecimalFormat("0.00");
+   private PrintWriter exportedFile;
 
    protected Order(){
       order = new ArrayList<Item>();
@@ -81,7 +84,7 @@ public class Order {
 
    protected double getBillTotal(){
       calculateTotal();
-      return orderTotalPrice;
+      return remainingTotal;
    }
 
    private void calculateTotal(){
@@ -92,22 +95,107 @@ public class Order {
             //keep a running total of bill
             orderTotalPrice += item.getPrice();
          }//for
+
+         // Setting remainingTotal
+         remainingTotal = orderTotalPrice;
       }//if
    }
 
-   protected double payOrder(double payment){
+   // Method to take a payment value and subtract it from the total. Returning the change.
+   private double takePayment(double payment){
+      this.payment += payment;
       double change;
-      change = -1* ( orderTotalPrice - payment);
-      orderTotalPrice -= payment;
+      change = -1* ( remainingTotal - payment);
+      remainingTotal -= payment;
 
-      if (orderTotalPrice <= 0){
+      if (remainingTotal <= 0){
          return change;
       }
       else{
-         System.out.println("\n" + df.format(orderTotalPrice) + " still to be paid.");
          return 0;
       }
    }//Pay Order
+
+   // Method to pay an order
+   protected void payOrder(){
+      char response;
+      double amountTendered;
+
+      // Make sure total has been updated
+      calculateTotal();
+
+      // User prompt for payment & then calculate change by calling takePayment()
+      amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
+      change = takePayment(amountTendered);
+
+      // If block for fully paid bill
+      if (remainingTotal <= 0){
+         //output
+         System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+         System.out.println("Amount Tendered:\t\t£" + df.format(payment));
+         System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
+
+         // Block for printing to file
+         response = UserInput.getCharInput("\nview + print the receipt (y or n)?: ");
+         if (response == 'y'){
+            viewReceipt();
+            exportReceipt();
+         }//if
+
+      }//if
+
+      // Else for partially paid bills
+      else {
+         System.out.println("Thank you for payment there is currently £" +
+                 df.format(remainingTotal) + " to be paid.");
+      }// else
+   } //payOrder
+
+   // Method to print end of transaction receipt
+   protected void viewReceipt(){
+      System.out.println("Print a receipt for table: ");
+      System.out.println("\n");
+      System.out.println("\t\t\tCafe App");
+      System.out.println("\t\tCustomer Receipt");
+      System.out.println("\t\t" + orderName);
+      printAnOrder();
+      System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+      System.out.println("Amount Tendered:\t\t£" + df.format(payment));
+      System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
+      System.out.println("**Thank you for your custom**\n");
+
+      orderComplete = true;
+   }//printReceipt
+
+   //method to print receipt to file
+   protected void exportReceipt() {
+      //variables
+      boolean open;
+      String myFileName = "receipt.txt";
+
+      //try..catch to catch any errors
+      try {
+         exportedFile = new PrintWriter(myFileName);
+         open = true;
+      }//try
+      catch (FileNotFoundException error) {
+         System.out.println("Error opening the file");
+         open = false;
+      }//catch
+      //try.. catch to catch any errors while printing to and exporting file
+      try {
+         if (open) {
+            exportedFile.println(toString());
+            exportedFile.close();
+            open = false;
+            System.out.println("Successfully written to file and closed");
+         }//if
+      }//try
+      catch (Exception error) {
+         System.out.println("Exception " + error.getMessage() + " caught");
+      }//catch
+   }//exportReceipt
+
 
    // Accessors & Mutators
    public boolean isOrderComplete() {
@@ -148,5 +236,21 @@ public class Order {
          number++;
       }//for
    }//viewOrder
+
+   public String toString(){
+      String message = "";
+      message.concat("\n");
+      message.concat("\t\t\tCafe App");
+      message.concat("\t\tCustomer Receipt");
+      message.concat("\t\t" + orderName);
+      for (Item item: order){
+         message.concat(item.getName() + " " + item.getPrice() + "\n");
+      }
+      message.concat("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+      message.concat("Amount Tendered:\t\t£" + df.format(payment));
+      message.concat("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
+      message.concat("**Thank you for your custom**\n");
+      return message;
+   }
 
 }//class
