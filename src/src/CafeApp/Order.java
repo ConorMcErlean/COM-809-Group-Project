@@ -14,7 +14,7 @@ public class Order {
    private ArrayList<Item> order;
    private boolean orderComplete;
    private boolean orderCooked;
-   private String orderName;
+   private String orderName, reciept;
    private double orderTotalPrice, remainingTotal, payment, change;
    private static int posOrders = 1;
    private static DecimalFormat df = new DecimalFormat("0.00");
@@ -185,7 +185,15 @@ public class Order {
       //try.. catch to catch any errors while printing to and exporting file
       try {
          if (open) {
-            exportedFile.println(toString());
+
+            // The below line does print
+            exportedFile.println("Hello World");
+
+            // Jennifer this is just a quick test line:
+            // Didn't fix anything.
+            toString();
+
+            exportedFile.print(toString());
             exportedFile.close();
             open = false;
             System.out.println("Successfully written to file and closed");
@@ -250,6 +258,10 @@ public class Order {
       message.concat("Amount Tendered:\t\t£" + df.format(payment));
       message.concat("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
       message.concat("**Thank you for your custom**\n");
+
+      // Out of curiosity I made a String variable called reciept and Im placing this string in it
+      // Testing if it prints
+      reciept = message;
       return message;
    }
 
