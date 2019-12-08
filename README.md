@@ -16,8 +16,10 @@ The program should accept orders fom a till operator, pass those orders to the k
 
 
 
-Known Bugs
+# Known Bugs
 
-If i directly go to apply a discount before printing the bill as the till operator then the manager discount does not apply.
-if the bill is first printed in the till log in then logged out and into the manager log in then the discount applies but does not show the discount just the discounted price.
-when added new items to addItem in manager it only adds the first name.
+
+Discount only applies when till has printed the bill.
+Discount not shown, only discounted price.
+Printing to a file not working
+Adding new Items only adds first word in name [testing fix].
