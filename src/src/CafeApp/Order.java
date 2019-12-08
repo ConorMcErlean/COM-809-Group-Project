@@ -224,7 +224,7 @@ public class Order {
          discount = (discountPerCent / 100) * orderTotalPrice;
          // Calculating new total
          orderTotalPrice -= discount;
-         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + orderTotalPrice);
+         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + df.format(orderTotalPrice));
          // Setting the total used for bill payment
          remainingTotal = orderTotalPrice;
       }//if
