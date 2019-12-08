@@ -209,6 +209,27 @@ public class Order {
       }//catch
    }//exportReceipt
 
+   // Method to discount an order
+   protected void discountOrder(double discountPerCent){
+      calculateTotal();
+      if (orderTotalPrice == remainingTotal) {
+         double discount;
+
+         System.out.println("Previous price £: " + orderTotalPrice);
+         // Calculating the discount
+         discount = (discountPerCent / 100) * orderTotalPrice;
+         // Calculating new total
+         orderTotalPrice -= discount;
+         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + orderTotalPrice);
+         // Setting the total used for bill payment
+         remainingTotal = orderTotalPrice;
+      }//if
+
+      else{
+         System.out.println("Sorry discounts cannot be applied on paid orders.");
+      }
+   }
+
 
    // Accessors & Mutators
    public boolean isOrderComplete() {

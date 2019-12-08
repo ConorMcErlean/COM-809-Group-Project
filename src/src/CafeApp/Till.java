@@ -106,22 +106,5 @@ public class Till extends Staff {
         toPay.payOrder();
     }//takePayment
 
-    protected static void applyDiscount(){
-        Scanner input = new Scanner(System.in);
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        double discount =0;
-
-        System.out.println("Please enter the discount you wish to apply in %: ");
-        discount = input.nextDouble();
-        Order order = getOrder();
-        double price = order.getOrderTotalPrice();
-        System.out.println("Previous price £: " + order.getOrderTotalPrice());
-        discount = price - ((discount/100) * price);
-        order.setOrderTotalPrice(discount);
-        System.out.println("Discount £: " + df.format(discount) + " New Price £: " + order.getOrderTotalPrice());
-
-    }//applyDiscount
-
 }//class
 

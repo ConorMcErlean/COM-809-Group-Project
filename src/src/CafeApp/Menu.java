@@ -210,7 +210,7 @@ public class Menu {
                Till.viewCurrentOrders();
                break;
             case 4:
-               Till.applyDiscount();
+               Management.applyDiscount();
                break;
             case 5:
                System.out.println("Out of stock items:");
