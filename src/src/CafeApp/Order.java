@@ -76,12 +76,12 @@ public class Order {
       System.out.println("\nThe bill for order " + orderName +
             " is: ");
       for (Item item : order) {
-         System.out.println(item.getName() + "\t\t\t£:" +
+         System.out.println(item.getName() + "\t\t\t£" +
                df.format(item.getPrice()));
       }//for
       calculateTotal();
       //total cost of bill
-      System.out.println("The total bill is: £" + df.format(orderTotalPrice));
+      System.out.println("The total bill is:  £" + df.format(orderTotalPrice));
    }//printBill
 
    protected double getBillTotal() {
@@ -170,10 +170,14 @@ public class Order {
 
    //method to print receipt to file
    protected void exportReceipt() {
-      Till.getOrder();
+
       //variables
       boolean open;
       String myFileName = "receipt.txt";
+
+      //accessing method to get the correct table's bill for exporting
+      System.out.println("To export the bill, please enter table number:");
+      Till.getOrder();
 
       //try..catch to catch any errors
       try {
@@ -264,7 +268,7 @@ public class Order {
    //method to Print an order
    protected void printAnOrder() {
       int number = 1;
-      System.out.println("\nThe order was: ");
+      System.out.println("\nThe order: ");
       for (Item item : order) {
          System.out.println(item.getName() + "\t\t\t\t" + "£" + df.format(item.getPrice()));
          number++;
