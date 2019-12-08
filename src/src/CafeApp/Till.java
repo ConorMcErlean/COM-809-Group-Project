@@ -100,81 +100,11 @@ public class Till extends Staff {
 
     //method to print receipt to file moved to Order class
 
-   // protected static void takePayment() {
-        //System.out.println("\nSelect which bill is being paid:");
-      //  Order toPay = getOrder();
-//
-//        //variables
-//        char response;
-//        double amountTendered, payment, change, billTotal = toPay.getBillTotal();
-//        //provide amount due:
-//        System.out.println("\nThe Total Bill for " + toPay.getOrderName()
-//                + " is: £" + df.format(billTotal));
-//
-//        //prompt for amount received
-//        amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
-//
-//        //calculate change
-//        change = amountTendered - billTotal;
-//
-//        //if statements in case bill is split
-//        if (amountTendered >= billTotal) {
-//            //output statements
-//            System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal));
-//            System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-//            System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
-//        }//if
-//        else {
-//            payment = toPay.payOrder(amountTendered);
-//        }//else
-//
-//        if (amountTendered >= billTotal) {
-//            response = UserInput.getCharInput("\nPrint a receipt (y or n)?: ");
-//            if (response == 'y') {
-//                printReceipt(billTotal, amountTendered, change);
-//                exportReceipt(billTotal, amountTendered, change);
-//            }//if
-//        }//if
-        //toPay.payOrder();
-    //}//takePayment
-
-//    //method to print receipt
-//    protected static void printReceipt(double billTotal, double amountTendered, double change) {
-//        System.out.println("Print a receipt for table: ");
-//        Order toPay = getOrder();
-//
-//        System.out.println("\n");
-//        System.out.println("\t\t\tCafe App");
-//        System.out.println("\t\tCustomer Receipt");
-//        System.out.println("\t\t" + toPay.getOrderName());
-//        toPay.printAnOrder();
-//        System.out.println("\nAmount Due: \t\t\t£" + df.format(billTotal));
-//        System.out.println("Amount Tendered:\t\t£" + df.format(amountTendered));
-//        System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
-//        System.out.println("**Thank you for your custom**\n");
-//
-//        toPay.setOrderComplete(true);
-//    }//printReceipt
-//
-//    //method to print receipt
-//    protected static String toString (double billTotal, double amountTendered, double change) {
-//        String message, message1, message2;
-//        System.out.println("Print a receipt for table: ");
-//        Order toPay = getOrder();
-//        String name = toPay.getOrderName();
-//        message1 = "\n" +
-//        "\n\t\t\tCafe App" +
-//        "\n\t\tCustomer Receipt" +
-//        "\n\t\t" + name + "\n";
-//        toPay.toString();
-//        message2 = "\nAmount Due: \t\t\t£" + df.format(billTotal) +
-//        "\nAmount Tendered:\t\t£" + df.format(amountTendered) +
-//        "\nChange Due:\t\t\t\t£" + df.format((change)) + "\n" +
-//        "\n**Thank you for your custom**\n";
-//
-//        message = message1 + toPay.toString() + message2;
-//        return message ;
-//    }//printReceipt2
+    protected static void takePayment() {
+        System.out.println("\nSelect which bill is being paid:");
+        Order toPay = getOrder();
+        toPay.payOrder();
+    }//takePayment
 
     protected static void applyDiscount(){
         Scanner input = new Scanner(System.in);

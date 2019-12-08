@@ -19,13 +19,13 @@ public class Management extends Staff {
       //Creating an instance of Item
       Item newItem = new Item();
 
-      name = UserInput.getString("Enter Item Name: ");     //every time i used this the add item would crash
+      name = UserInput.getString("Enter Item Name: ");
       newItem.setName(name);
       price = UserInput.getDoubleInput("Enter price: £ ");
       newItem.setPrice(price);
 
-      //Adding the item object                                 //this shows that the item has been added to the list of
-      menu.add(newItem);                                       //current items
+      //Adding the item object
+      menu.add(newItem);
 
       //Printing each item to check if new item has been added
       for (Item item : menu) {

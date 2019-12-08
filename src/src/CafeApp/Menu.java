@@ -10,8 +10,6 @@ Kitchen: 2222
 Management: 3333
 */
 
-import java.util.Scanner;
-
 public class Menu {
 
    // Objects & Variables required for main menu
