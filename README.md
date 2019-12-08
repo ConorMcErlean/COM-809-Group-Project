@@ -26,4 +26,8 @@ Discount not shown, only discounted price. [Testing Fix]
 Printing to a file not working [Testing Fix]
 
 Adding new Items only adds first word in name [Testing fix].
-This now print a list of all the items and their details but says the new item is out of stock...
+
+Adding new items now print a list of all the items and their details but says the new item is out of stock...
+
+when choosing the view current orders option, if you enter the table number wrong ie. entering 4 insteadd of 1 it throws up the index out of bounds error
+
