@@ -26,3 +26,4 @@ Discount not shown, only discounted price. [Testing Fix]
 Printing to a file not working [Testing Fix]
 
 Adding new Items only adds first word in name [Testing fix].
+This now print a list of all the items and their details but says the new item is out of stock...
