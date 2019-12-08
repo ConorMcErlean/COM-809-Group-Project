@@ -19,7 +19,7 @@ The program should accept orders fom a till operator, pass those orders to the k
 # Known Bugs
 
 
-Discount only applies when till has printed the bill.
-Discount not shown, only discounted price.
-Printing to a file not working
+Discount only applies when till has printed the bill. [Testing Fix]
+Discount not shown, only discounted price. [Testing Fix]
+Printing to a file not working [Testing Fix]
 Adding new Items only adds first word in name [testing fix].
