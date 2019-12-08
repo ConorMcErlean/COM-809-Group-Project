@@ -8,35 +8,21 @@ Class for safely handling user input
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 public class UserInput {
    private static Scanner keyboard = new Scanner(System.in);
 
    // Method to get user input and protect from incorrect entries.
-   protected static int getIntInput(){
-      int inputValue = 0;
-      boolean invalidResponse = true;
-      do {
-         try {
-            inputValue = keyboard.nextInt();
-            invalidResponse = false;
-         }//Try
-         catch (Exception issue) {
-            System.out.println("Try again:");
-         }
-      }while (invalidResponse);
-      return inputValue;
-   }//GetUserInput
-
    protected static int getIntInput(String message){
       int inputValue = 0;
       boolean invalidResponse = true;
       do {
          try {
             System.out.print(message);
-            invalidResponse = false;
             inputValue = keyboard.nextInt();
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
+            invalidResponse = false;
          }//Try
          catch (Exception issue) {
             System.out.println("Invalid entry, Try again:");
@@ -54,6 +40,8 @@ public class UserInput {
             System.out.print(message);
             inputValue = keyboard.nextDouble();
             invalidResponse = false;
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
          }//Try
          catch (Exception issue) {
             System.out.println("Incorrect value entered, try again:");
@@ -61,30 +49,6 @@ public class UserInput {
       }while(invalidResponse);
       return inputValue;
    }//GetDoubleInput
-
-   // Method for getting a character input
-   protected static char getCharInput(){
-      String inputValue;
-      char returnValue = 'x';
-      boolean invalidResponse = true;
-      do {
-         try {
-            inputValue = keyboard.next();
-            returnValue = inputValue.toLowerCase().charAt(0);
-
-            if (returnValue == 'n' || returnValue == 'y') {
-               invalidResponse = false;
-            }
-            else {
-               System.out.println("Incorrect value entered, try again:");
-            }
-         }//Try
-         catch (Exception issue) {
-            System.out.println("Incorrect value entered, try again:");
-         }
-      }while (invalidResponse);
-      return returnValue;
-   }//GetCharInput
 
    // Method to get an array position safely
    protected static int getArrayInput(String message, ArrayList<Item> array) {
@@ -94,6 +58,8 @@ public class UserInput {
       do {
          try {
             input = keyboard.nextInt();
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
             if (input - 1 < array.size()) {
                invalidResponse = false;
             } else {
@@ -115,7 +81,7 @@ public class UserInput {
       do {
          try {
             System.out.print(message);
-            inputValue = keyboard.next();
+            inputValue = keyboard.nextLine();
             returnValue = inputValue.toLowerCase().charAt(0);
 
             if (returnValue == 'n' || returnValue == 'y') {
@@ -133,7 +99,6 @@ public class UserInput {
 
    protected static String getString(String message){
       System.out.print(message);
-      keyboard.next();
       return keyboard.nextLine();
    }
 
