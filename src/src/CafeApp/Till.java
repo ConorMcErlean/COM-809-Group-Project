@@ -1,7 +1,4 @@
 package CafeApp;
-
-
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
@@ -101,9 +98,11 @@ public class Till extends Staff {
         toPrint.printBill();
     }//printBill
 
-    protected static void takePayment() {
-        System.out.println("\nSelect which bill is being paid:");
-        Order toPay = getOrder();
+    //method to print receipt to file moved to Order class
+
+   // protected static void takePayment() {
+        //System.out.println("\nSelect which bill is being paid:");
+      //  Order toPay = getOrder();
 //
 //        //variables
 //        char response;
@@ -136,8 +135,8 @@ public class Till extends Staff {
 //                exportReceipt(billTotal, amountTendered, change);
 //            }//if
 //        }//if
-        toPay.payOrder();
-    }//takePayment
+        //toPay.payOrder();
+    //}//takePayment
 
 //    //method to print receipt
 //    protected static void printReceipt(double billTotal, double amountTendered, double change) {
@@ -193,35 +192,6 @@ public class Till extends Staff {
         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + order.getOrderTotalPrice());
 
     }//applyDiscount
-
-    //method to print receipt to file
-//    protected static void exportReceipt(double billTotal, double amountTendered, double change) {
-//        //variables
-//        boolean open;
-//        String myFileName = "receipt.txt";
-//        //try..catch to catch any errors
-//        try {
-//            exportedFile = new PrintWriter(myFileName);
-//            open = true;
-//        }//try
-//        catch (FileNotFoundException error) {
-//            System.out.println("Error opening the file");
-//            open = false;
-//        }//catch
-//        //try.. catch to catch any errors while printing to and exporting file
-//        try {
-//            if (open) {
-//                exportedFile.println(toString(billTotal, amountTendered, change));
-//                exportedFile.println();
-//                exportedFile.close();
-//                open = false;
-//                System.out.println("Successfully written to file and closed");
-//            }//if
-//        }//try
-//        catch (Exception error) {
-//            System.out.println("Exception " + error.getMessage() + " caught");
-//        }//catch
-//    }//exportReceipt
 
 }//class
 
