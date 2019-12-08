@@ -175,7 +175,7 @@ public class Order {
       boolean open;
       String myFileName = "receipt.txt";
 
-      //accessing method to get the correct table's bill for exporting
+      //method to get the correct table's bill to export
       System.out.println("To export the bill, please enter table number:");
       Till.getOrder();
 
@@ -201,7 +201,7 @@ public class Order {
             }//for
             exportedFile.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice) +
                   "\nAmount Tendered:\t\t£" + df.format(payment)+
-                  "\nChange Due:\t\t\t£" + df.format((change)) + "\n" +
+                  "\nChange:    \t\t\t£" + df.format((change)) + "\n" +
                   "\n     **Thank you for your custom**\n");
             exportedFile.close();
             open = false;
