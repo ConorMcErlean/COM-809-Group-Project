@@ -18,7 +18,8 @@ public class Order {
    private boolean orderComplete;
    private boolean orderCooked;
    private String orderName, reciept;
-   private double orderTotalPrice, remainingTotal, payment, change;
+   private double orderTotalPrice, remainingTotal, payment, change, discountPercent, discount,
+           discountedTotal;
    private static int posOrders = 1;
    private static DecimalFormat df = new DecimalFormat("0.00");
    private PrintWriter exportedFile;
@@ -217,16 +218,18 @@ public class Order {
    protected void discountOrder(double discountPerCent){
       calculateTotal();
       if (orderTotalPrice == remainingTotal) {
+         this.discountPercent = discountPerCent;
          double discount;
 
          System.out.println("Previous price £: " + orderTotalPrice);
          // Calculating the discount
          discount = (discountPerCent / 100) * orderTotalPrice;
+         this.discount = discount;
          // Calculating new total
-         orderTotalPrice -= discount;
-         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + df.format(orderTotalPrice));
+         discountedTotal = orderTotalPrice - discount;
+         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + discountedTotal);
          // Setting the total used for bill payment
-         remainingTotal = orderTotalPrice;
+         remainingTotal = discountedTotal;
       }//if
 
       else{

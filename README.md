@@ -28,6 +28,17 @@ Printing to a file not working [Testing Fix]
 Adding new Items only adds first word in name [Testing fix].
 
 Adding new items now print a list of all the items and their details but says the new item is out of stock...
+[Testing Fix]
 
-when choosing the view current orders option, if you enter the table number wrong ie. entering 4 insteadd of 1 it throws up the index out of bounds error
+when choosing options to do with orders, if you enter the table number wrong ie. entering 4 insteadd of 1 it throws up the index out of bounds error
+[Testing Fix]
+
+if you type a character eg. k when instead of entering a number it goes into an invaild loop that you have to stop and restart the program to do anything else
+
+
+When the manager selects view out of stock it makes the user input a number to mark an item out of stock instead of viewing them.
+[Testing Fix]
+
+When the final bill is printed do we want discount to appear on the bill too? if not it just looks like our math sucks.
+
 

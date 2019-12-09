@@ -64,7 +64,8 @@ public class Till extends Staff {
     //Method to select an order
     protected static Order getOrder() {
         viewAllOrders();
-        int selection = UserInput.getIntInput("Choose an order:");
+//        int selection = UserInput.getIntInput("Choose an order:");
+        int selection = UserInput.getArrayInput( orders, "Choose an order:");
         selection--;
         return orders.get(selection);
     }

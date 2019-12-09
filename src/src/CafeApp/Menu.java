@@ -215,6 +215,7 @@ public class Menu {
             case 5:
                System.out.println("Out of stock items:");
                StockList.viewOutOfStock();
+               break;
             case 6:
                Kitchen.markOutOfStock();
                break;

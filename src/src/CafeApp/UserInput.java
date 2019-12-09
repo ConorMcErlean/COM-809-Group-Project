@@ -20,12 +20,15 @@ public class UserInput {
          try {
             System.out.print(message);
             inputValue = keyboard.nextInt();
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
-            keyboard.nextLine();
+
             invalidResponse = false;
          }//Try
          catch (Exception issue) {
             System.out.println("Invalid entry, Try again:");
+         }
+         finally {
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
          }
       }while (invalidResponse);
       return inputValue;
@@ -40,11 +43,13 @@ public class UserInput {
             System.out.print(message);
             inputValue = keyboard.nextDouble();
             invalidResponse = false;
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
-            keyboard.nextLine();
          }//Try
          catch (Exception issue) {
             System.out.println("Incorrect value entered, try again:");
+         }
+         finally {
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
          }
       }while(invalidResponse);
       return inputValue;
@@ -52,6 +57,28 @@ public class UserInput {
 
    // Method to get an array position safely
    protected static int getArrayInput(String message, ArrayList<Item> array) {
+      boolean invalidResponse = true;
+      int input = 0;
+      System.out.println(message);
+      do {
+         try {
+            input = keyboard.nextInt();
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
+            if (input - 1 < array.size()) {
+               invalidResponse = false;
+            } else {
+               System.out.println("Not an option, Try again:");
+            }
+         } catch (Exception issue) {
+            String hold = keyboard.next();
+            System.out.println("Not an option, Try again:");
+         }
+      } while (invalidResponse);
+      return input;
+   }//GetArrayInput
+
+   protected static int getArrayInput(ArrayList<Order> array, String message) {
       boolean invalidResponse = true;
       int input = 0;
       System.out.println(message);
