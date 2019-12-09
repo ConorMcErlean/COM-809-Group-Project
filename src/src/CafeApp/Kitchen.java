@@ -33,6 +33,7 @@ class Kitchen extends Staff {
       // Line below prevents eternal loops
       if (StockList.getOutOfStockSize() > 0) {
          Item item = StockList.selectOutOfStock();
+         item.setInStock(true);
          StockList.removeFromOutOfStock(item);
          System.out.println("The item " + item.getName() + " has been marked" +
                  " back in stock");
