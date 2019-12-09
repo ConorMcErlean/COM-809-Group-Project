@@ -73,6 +73,28 @@ public class UserInput {
       return input;
    }//GetArrayInput
 
+   protected static int getArrayInput(ArrayList<Order> array, String message) {
+      boolean invalidResponse = true;
+      int input = 0;
+      System.out.println(message);
+      do {
+         try {
+            input = keyboard.nextInt();
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
+            if (input - 1 < array.size()) {
+               invalidResponse = false;
+            } else {
+               System.out.println("Not an option, Try again:");
+            }
+         } catch (Exception issue) {
+            String hold = keyboard.next();
+            System.out.println("Not an option, Try again:");
+         }
+      } while (invalidResponse);
+      return input;
+   }//GetArrayInput
+
    // Method for getting a character input
    protected static char getCharInput(String message){
       String inputValue;
