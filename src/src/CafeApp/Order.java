@@ -80,6 +80,10 @@ public class Order {
          System.out.println(item.getName() + "\t\t\t£" +
                df.format(item.getPrice()));
       }//for
+      if (discountPercent > 0) {
+         System.out.println("Discount amount (if available): £" + df.format(discount));
+         System.out.println("Discounted Total: £" + df.format(discountedTotal));
+      }//if
       calculateTotal();
       //total cost of bill
       System.out.println("The total bill is:  £" + df.format(orderTotalPrice));
