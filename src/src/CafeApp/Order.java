@@ -5,20 +5,18 @@ Created on: 03/12/2019
 Class to create order objects to allow for multiple orders.
 */
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Order {
    private ArrayList<Item> order;
    private boolean orderComplete;
    private boolean orderCooked;
    private String orderName, reciept;
-   private double orderTotalPrice, remainingTotal, payment, change, discountPercent, discount,
+   private double orderTotalPrice, remainingTotal, payment, change,
+           discountPercent, discount,
            discountedTotal;
    private static int posOrders = 1;
    private static DecimalFormat df = new DecimalFormat("0.00");
@@ -81,7 +79,8 @@ public class Order {
                df.format(item.getPrice()));
       }//for
       if (discountPercent > 0) {
-         System.out.println("Discount amount (if available): £" + df.format(discount));
+         System.out.println("Discount amount (if available): £"
+                 + df.format(discount));
          System.out.println("Discounted Total: £" + df.format(discountedTotal));
       }//if
       calculateTotal();
@@ -108,7 +107,8 @@ public class Order {
       }//if
    }//calculateTotal
 
-   // Method to take a payment value and subtract it from the total. Returning the change.
+   // Method to take a payment value and subtract it from the total. Returning
+   // the change.
    private double takePayment(double payment) {
       this.payment += payment;
       double change;
@@ -130,23 +130,29 @@ public class Order {
       // Make sure total has been updated
       calculateTotal();
 
-      // User prompt for payment & then calculate change by calling takePayment()
+      // User prompt for payment & then calculate change by calling
+      // takePayment()
       amountTendered = UserInput.getDoubleInput("Enter amount Tendered: £");
       change = takePayment(amountTendered);
 
       // If statements for a paid bill
       if (remainingTotal <= 0) {
          //output
-         System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+         System.out.println("\nAmount Due: \t\t\t£"
+                 + df.format(orderTotalPrice));
          if (discountPercent > 0) {
-            System.out.println("Discount amount (if available): £" + df.format(discount));
-            System.out.println("Discounted Total: £" + df.format(discountedTotal));
+            System.out.println("Discount amount (if available): £"
+                    + df.format(discount));
+            System.out.println("Discounted Total: £"
+                    + df.format(discountedTotal));
          }//if
          System.out.println("Amount Tendered:\t\t£" + df.format(payment));
-         System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
+         System.out.println("Change Due:\t\t\t\t£" + df.format((change))
+                 + "\n");
 
          //to print to file
-         response = UserInput.getCharInput("\nview + print the receipt (y or n)?: ");
+         response = UserInput.getCharInput("\nview + print the receipt " +
+                 "(y or n)?: ");
          if (response == 'y') {
             viewReceipt();
             exportReceipt();
@@ -171,14 +177,13 @@ public class Order {
       printAnOrder();
       System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
       if (discountPercent > 0) {
-         System.out.println("Discount amount (if available): £" + df.format(discount));
+         System.out.println("Discount amount (if available): £"
+                 + df.format(discount));
          System.out.println("Discounted Total: £" + df.format(discountedTotal));
       }//if
       System.out.println("Amount Tendered:\t\t£" + df.format(payment));
       System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
       System.out.println("**Thank you for your custom**\n");
-
-      orderComplete = true;
    }//printReceipt
 
    //method to print receipt to file
@@ -210,12 +215,16 @@ public class Order {
                   "\n\t       Customer Receipt" +
                   "\n\t\t" + orderName);
             for (Item item : order) {
-            exportedFile.println(item.getName() + "\t\t\t" + "£" + df.format(item.getPrice()));
+            exportedFile.println(item.getName() + "\t\t\t" + "£"
+                    + df.format(item.getPrice()));
             }//for
-            exportedFile.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+            exportedFile.println("\nAmount Due: \t\t\t£"
+                    + df.format(orderTotalPrice));
             if (discountPercent > 0) {
-               exportedFile.println("Discount amount (if available): £" + df.format(discount));
-               exportedFile.println("Discounted Total: £" + df.format(discountedTotal));
+               exportedFile.println("Discount amount (if available): £"
+                       + df.format(discount));
+               exportedFile.println("Discounted Total: £"
+                       + df.format(discountedTotal));
             }//if
             exportedFile.println("\nAmount Tendered:\t\t£" + df.format(payment)+
                   "\nChange:    \t\t\t£" + df.format((change)) + "\n" +
@@ -237,13 +246,15 @@ public class Order {
          this.discountPercent = discountPerCent;
          double discount;
 
-         System.out.println("Previous price £: " + df.format(orderTotalPrice));
+         System.out.println("Previous price £: "
+                 + df.format(orderTotalPrice));
          // Calculating the discount
          discount = (discountPerCent / 100) * orderTotalPrice;
          this.discount = discount;
          // Calculating new total
          discountedTotal = orderTotalPrice - discount;
-         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + df.format(discountedTotal));
+         System.out.println("Discount £: " + df.format(discount)
+                 + " New Price £: " + df.format(discountedTotal));
          // Setting the total used for bill payment
          remainingTotal = discountedTotal;
       }//if
@@ -255,71 +266,19 @@ public class Order {
 
 
    // Accessors & Mutators
-   public boolean isOrderComplete() {
-      return orderComplete;
-   }//isOrderComplete
-
-   public void setOrderComplete(boolean orderComplete) {
-      this.orderComplete = orderComplete;
-   }//setOrderComplete
-
-   public boolean isOrderCooked() {
-      return orderCooked;
-   }//isOrderCooked
-
-   public void setOrderCooked(boolean orderCooked) {
-      this.orderCooked = orderCooked;
-   }//setOrderCooked
 
    public String getOrderName() {
       return orderName;
    }//getOrderName
-
-   //setter to try to apply discount. This works now!! added by Matthew
-   public void setOrderTotalPrice(double orderTotalPrice) {
-      this.orderTotalPrice = orderTotalPrice;
-   }//setOrderTotalPrice
-
-   public double getOrderTotalPrice() {
-      return orderTotalPrice;
-   }//getOrderTotalPrice
 
    //method to Print an order
    protected void printAnOrder() {
       int number = 1;
       System.out.println("\nThe order: ");
       for (Item item : order) {
-         System.out.println(item.getName() + "\t\t\t\t" + "£" + df.format(item.getPrice()));
+         System.out.println(item.getName() + "\t\t\t\t"
+                 + "£" + df.format(item.getPrice()));
          number++;
       }//for
    }//viewOrder
-
-  //public String toString(){
-//      String message = "";
-//      message.concat("\n");
-//      message.concat("\t\t\tCafe App");
-//      message.concat("\t\tCustomer Receipt");
-//      message.concat("\t\t" + orderName);
-//      for (Item item: order){
-//         message.concat(item.getName() + " " + item.getPrice() + "\n");
-//      }
-//      message.concat("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
-//      message.concat("Amount Tendered:\t\t£" + df.format(payment));
-//      message.concat("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
-//      message.concat("**Thank you for your custom**\n");
-//
-//      // Out of curiosity I made a String variable called receipt and Im placing this string in it
-//      // Testing if it prints
-//      reciept = message;
-//      return message;
-//   }
-
-//   public String toString () {
-//   for (Item item : order) {
-//      (item.getName() + "\t\t\t\t" + "£" + df.format(item.getPrice()) +"\n");
-//      }//for
-//      return ;
-//   }
-
-
 }//class

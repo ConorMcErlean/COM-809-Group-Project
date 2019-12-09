@@ -79,7 +79,8 @@ public class StockList {
       // Variables and objects required
       int choice;
          seeOptions();
-         choice = UserInput.getArrayInput("Enter the item number: ", menu);
+         choice = UserInput.getArrayInput("Enter the item number: ",
+                 menu);
          choice--;
          return menu.get(choice);
    }// Select Item
@@ -90,7 +91,8 @@ public class StockList {
       // Variables and objects required
       int choice;
       viewOutOfStock();
-      choice = UserInput.getArrayInput("Enter the item number: ", outOfStock);
+      choice = UserInput.getArrayInput("Enter the item number: ",
+              outOfStock);
       choice--;
       return outOfStock.get(choice);
    }// Select out of stock.
@@ -114,23 +116,6 @@ public class StockList {
       return menu;
    }//getMenu
 
-   //jen test to get mark out of stock working
-   protected static void seeOOS(){
-      int counter = 1;
-      for (Item item: outOfStock){
-         System.out.println(counter + ". " + item.getName());
-         counter++;
-      }//for
-   }// See Options
-
-   //jen test to get mark out of stock working
-   protected static Item selectStock() {
-      int choice;
-      seeOOS();
-      choice = UserInput.getIntInput("Enter the item number: ");
-      choice--;
-      return outOfStock.get(choice);
-   }
    protected static int getOutOfStockSize(){
       return outOfStock.size();
    }

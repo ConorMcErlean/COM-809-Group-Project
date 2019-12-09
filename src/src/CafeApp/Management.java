@@ -44,7 +44,8 @@ public class Management extends Staff {
       //Select order to discount
       Order order = Till.getOrder();
       //User Prompt
-      discount = UserInput.getDoubleInput("Please enter the discount you wish to apply in %: ");
+      discount = UserInput.getDoubleInput("Please enter the discount " +
+              "you wish to apply in %: ");
       // Calling the discount method in Order Class
       order.discountOrder(discount);
    }//applyDiscount

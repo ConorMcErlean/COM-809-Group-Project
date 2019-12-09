@@ -1,9 +1,7 @@
 package CafeApp;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by Jennifer Coggan on 21/11/2019
@@ -17,7 +15,6 @@ public class Till extends Staff {
 
     // Static Variables
     private static boolean next = true;
-    static PrintWriter exportedFile;
     // Order Arrays
     static private ArrayList<Order> orders = new
             ArrayList<Order>();
@@ -64,25 +61,25 @@ public class Till extends Staff {
     //Method to select an order
     protected static Order getOrder() {
         viewAllOrders();
-//        int selection = UserInput.getIntInput("Choose an order:");
-        int selection = UserInput.getArrayInput( orders, "Choose an order:");
+        int selection = UserInput.getArrayInput( orders,
+                "Choose an order:");
         selection--;
         return orders.get(selection);
-    }
+    }//getOrder
 
     // Method to add to existing orders
     protected static void addToExisting() {
         System.out.println("\nSelect which order you wish to edit:");
         Order adding = getOrder();
         addToOrder(adding);
-    }
+    }//addToExisting
 
     // Method to view current orders
     protected static void viewCurrentOrders() {
         System.out.println("\nSelect the order you wish to view:");
         Order viewing = getOrder();
         viewOrder(viewing);
-    }
+    }//viewCurrentOrders
 
     //method to remove item from order
     protected static void removeOrderItem() {
@@ -99,13 +96,11 @@ public class Till extends Staff {
         toPrint.printBill();
     }//printBill
 
-    //method to print receipt to file moved to Order class
-
+    // Method to select and pay an order.
     protected static void takePayment() {
         System.out.println("\nSelect which bill is being paid:");
         Order toPay = getOrder();
         toPay.payOrder();
     }//takePayment
-
 }//class
 

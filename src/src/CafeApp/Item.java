@@ -29,48 +29,20 @@ public class Item {
    public Item(){
    }// Default Constructor
 
-   public Item(String itemName, double itemPrice, boolean itemInStock,
-               int introDiscount){
-      name = itemName;
-      price = itemPrice;
-      inStock = itemInStock;
-      discount = introDiscount;
-   }// Alternate constructor for when all fields are known
-
    // Class Methods (Accessors and Mutators)
-   // All have been created but some may be unnecessary.
-   // Additional methods can be removed at a later date.
 
    protected String getName() {
       return name;
    }
 
-   protected void setName(String name) {
-      this.name = name;
-   }
 
    protected double getPrice() {
       return price;
    }
 
-   protected void setPrice(double price) {
-      this.price = price;
-   }
-
-   protected boolean getInStock() {
-      return inStock;
-   }
 
    protected void setInStock(boolean inStock) {
       this.inStock = inStock;
-   }
-
-   protected int getDiscount() {
-      return discount;
-   }
-
-   protected void setDiscount(int discount) {
-      this.discount = discount;
    }
 
    public String toString(){

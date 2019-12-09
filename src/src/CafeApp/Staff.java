@@ -3,8 +3,6 @@ package CafeApp;
 Written by Matthew created on 19/11/19
  */
 
-import java.util.Scanner;
-
 public class Staff{
 
     private int loginID;

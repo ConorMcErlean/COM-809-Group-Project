@@ -63,7 +63,8 @@ public class UserInput {
       do {
          try {
             input = keyboard.nextInt();
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            // Line below consumes rest of line to prevent errors with
+            // nextLine() later in program.
             keyboard.nextLine();
             if (input - 1 < array.size()) {
                invalidResponse = false;
@@ -85,7 +86,8 @@ public class UserInput {
       do {
          try {
             input = keyboard.nextInt();
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            // Line below consumes rest of line to prevent errors with
+            // nextLine() later in program.
             keyboard.nextLine();
             if (input - 1 < array.size()) {
                invalidResponse = false;
@@ -127,6 +129,6 @@ public class UserInput {
    protected static String getString(String message){
       System.out.print(message);
       return keyboard.nextLine();
-   }
+   }//getString
 
 }//class
