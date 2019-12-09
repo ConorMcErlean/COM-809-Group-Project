@@ -20,12 +20,15 @@ public class UserInput {
          try {
             System.out.print(message);
             inputValue = keyboard.nextInt();
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
-            keyboard.nextLine();
+
             invalidResponse = false;
          }//Try
          catch (Exception issue) {
             System.out.println("Invalid entry, Try again:");
+         }
+         finally {
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
          }
       }while (invalidResponse);
       return inputValue;
@@ -40,11 +43,13 @@ public class UserInput {
             System.out.print(message);
             inputValue = keyboard.nextDouble();
             invalidResponse = false;
-            // Line below consumes rest of line to prevent errors with nextLine() later in program.
-            keyboard.nextLine();
          }//Try
          catch (Exception issue) {
             System.out.println("Incorrect value entered, try again:");
+         }
+         finally {
+            // Line below consumes rest of line to prevent errors with nextLine() later in program.
+            keyboard.nextLine();
          }
       }while(invalidResponse);
       return inputValue;
