@@ -16,13 +16,12 @@ public class Management extends Staff {
       double price;
       ArrayList<Item> menu = StockList.getMenu();
 
-      //Creating an instance of Item
-      Item newItem = new Item();
-
+      // User Prompts
       name = UserInput.getString("Enter Item Name: ");
-      newItem.setName(name);
       price = UserInput.getDoubleInput("Enter price: £ ");
-      newItem.setPrice(price);
+
+      // Creating an instance of Item
+      Item newItem = new Item(name, price);
 
       //Adding the item object
       menu.add(newItem);
