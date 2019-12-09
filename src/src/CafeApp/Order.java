@@ -134,6 +134,10 @@ public class Order {
       if (remainingTotal <= 0) {
          //output
          System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+         if (discountPercent > 0) {
+            System.out.println("Discount amount (if available): £" + df.format(discount));
+            System.out.println("Discounted Total: £" + df.format(discountedTotal));
+         }//if
          System.out.println("Amount Tendered:\t\t£" + df.format(payment));
          System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
 
@@ -162,6 +166,10 @@ public class Order {
       System.out.println("\t\t" + orderName);
       printAnOrder();
       System.out.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+      if (discountPercent > 0) {
+         System.out.println("Discount amount (if available): £" + df.format(discount));
+         System.out.println("Discounted Total: £" + df.format(discountedTotal));
+      }//if
       System.out.println("Amount Tendered:\t\t£" + df.format(payment));
       System.out.println("Change Due:\t\t\t\t£" + df.format((change)) + "\n");
       System.out.println("**Thank you for your custom**\n");
@@ -200,8 +208,12 @@ public class Order {
             for (Item item : order) {
             exportedFile.println(item.getName() + "\t\t\t" + "£" + df.format(item.getPrice()));
             }//for
-            exportedFile.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice) +
-                  "\nAmount Tendered:\t\t£" + df.format(payment)+
+            exportedFile.println("\nAmount Due: \t\t\t£" + df.format(orderTotalPrice));
+            if (discountPercent > 0) {
+               exportedFile.println("Discount amount (if available): £" + df.format(discount));
+               exportedFile.println("Discounted Total: £" + df.format(discountedTotal));
+            }//if
+            exportedFile.println("\nAmount Tendered:\t\t£" + df.format(payment)+
                   "\nChange:    \t\t\t£" + df.format((change)) + "\n" +
                   "\n     **Thank you for your custom**\n");
             exportedFile.close();
@@ -221,13 +233,13 @@ public class Order {
          this.discountPercent = discountPerCent;
          double discount;
 
-         System.out.println("Previous price £: " + orderTotalPrice);
+         System.out.println("Previous price £: " + df.format(orderTotalPrice));
          // Calculating the discount
          discount = (discountPerCent / 100) * orderTotalPrice;
          this.discount = discount;
          // Calculating new total
          discountedTotal = orderTotalPrice - discount;
-         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + discountedTotal);
+         System.out.println("Discount £: " + df.format(discount) + " New Price £: " + df.format(discountedTotal));
          // Setting the total used for bill payment
          remainingTotal = discountedTotal;
       }//if
