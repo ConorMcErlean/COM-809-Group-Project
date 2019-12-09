@@ -1,4 +1,5 @@
 package CafeApp;
+import javax.jws.soap.SOAPBinding;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
@@ -64,7 +65,8 @@ public class Till extends Staff {
     //Method to select an order
     protected static Order getOrder() {
         viewAllOrders();
-        int selection = UserInput.getIntInput("Choose an order:");
+//        int selection = UserInput.getIntInput("Choose an order:");
+        int selection = UserInput.getArrayInput( orders, "Choose an order:");
         selection--;
         return orders.get(selection);
     }
